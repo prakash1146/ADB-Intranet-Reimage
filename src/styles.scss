@@ -1,0 +1,563 @@
+/* You can add global styles to this file, and also import other style files */
+
+// ============================================================
+// ADB Intranet — Global Styles
+// Source: ADB Design Repository (Figma)
+// ============================================================
+
+// ------------------------------------------------------------
+// 1. BRAND BLUE
+// ------------------------------------------------------------
+$brand-blue-brand:     #0088c7;
+$brand-blue-mid:       #00a1cb;
+$brand-blue-xxlight:   #6de3f6;
+$brand-blue-alt:       #0099d8;
+$brand-blue-bright:    #009fd6;
+$brand-blue-light-alt: #00bee8;
+
+// ------------------------------------------------------------
+// 2. PRIMARY BLUE
+// ------------------------------------------------------------
+$primary-light: #68c5ea;
+$primary-main:  #007db7;
+$primary-dark:  #0277bd;
+
+// ------------------------------------------------------------
+// 3. SECONDARY LIME
+// ------------------------------------------------------------
+$secondary-main:  #c8da2b;
+$secondary-dark:  #9e9d24;
+$secondary-light: #dce775;
+
+// ------------------------------------------------------------
+// 4. ACCENTS
+// ------------------------------------------------------------
+$accent-green:       #8dc63f;
+$accent-cyan:        #00b6da;
+$accent-deep-orange: #e9532b;
+$accent-amber:       #ffc107;
+$accent-light-blue:  #63ccec;
+$accent-orange:      #f57f29;
+$accent-teal:        #00a5d2;
+$accent-yellow:      #f2c800;
+
+// ------------------------------------------------------------
+// 5. BACKGROUNDS
+// ------------------------------------------------------------
+$bg-default: #f5f5f5;
+$bg-white:   #ffffff;
+$bg-light:   #fafafa;
+
+// ------------------------------------------------------------
+// 6. TEXT
+// ------------------------------------------------------------
+$text-default:   #212121;
+$text-secondary: #616161;
+$text-tertiary:  #9e9e9e;
+$text-disabled:  #bdbdbd;
+
+// ------------------------------------------------------------
+// 7. BORDERS
+// ------------------------------------------------------------
+$border-light:   #e0e0e0;
+$border-focus:   #007db7;
+$border-dark:    #9e9e9e;
+$border-default: #bdbdbd;
+
+// ------------------------------------------------------------
+// 8. INFO
+// ------------------------------------------------------------
+$info-extra-dark:  #01579b;
+$info-dark:        #0288d1;
+$info-main:        #03a9f4;
+$info-light:       #b3e5fc;
+$info-extra-light: #e1f5fe;
+
+// ------------------------------------------------------------
+// 9. SUCCESS
+// ------------------------------------------------------------
+$success-dark:  #2e7d32;
+$success-main:  #43a047;
+$success-light: #c8e6c9;
+
+// ------------------------------------------------------------
+// 10. WARNINGS
+// ------------------------------------------------------------
+$warning-light: #ffe0b2;
+$warning-main:  #f57c00;
+$warning-dark:  #e65100;
+
+// ------------------------------------------------------------
+// 11. ERRORS
+// ------------------------------------------------------------
+$error-light: #fecdd2;
+$error-main:  #f44336;
+$error-dark:  #d32f2f;
+
+// ------------------------------------------------------------
+// 12. CSS CUSTOM PROPERTIES (Design Tokens)
+// ------------------------------------------------------------
+:root {
+  // Brand Blue
+  --color-brand-blue-brand:     #{$brand-blue-brand};
+  --color-brand-blue-mid:       #{$brand-blue-mid};
+  --color-brand-blue-xxlight:   #{$brand-blue-xxlight};
+  --color-brand-blue-alt:       #{$brand-blue-alt};
+  --color-brand-blue-bright:    #{$brand-blue-bright};
+  --color-brand-blue-light-alt: #{$brand-blue-light-alt};
+
+  // Primary
+  --color-primary-light: #{$primary-light};
+  --color-primary-main:  #{$primary-main};
+  --color-primary-dark:  #{$primary-dark};
+
+  // Secondary
+  --color-secondary-main:  #{$secondary-main};
+  --color-secondary-dark:  #{$secondary-dark};
+  --color-secondary-light: #{$secondary-light};
+
+  // Accents
+  --color-accent-green:       #{$accent-green};
+  --color-accent-cyan:        #{$accent-cyan};
+  --color-accent-deep-orange: #{$accent-deep-orange};
+  --color-accent-amber:       #{$accent-amber};
+  --color-accent-light-blue:  #{$accent-light-blue};
+  --color-accent-orange:      #{$accent-orange};
+  --color-accent-teal:        #{$accent-teal};
+  --color-accent-yellow:      #{$accent-yellow};
+
+  // Backgrounds
+  --color-bg-default: #{$bg-default};
+  --color-bg-white:   #{$bg-white};
+  --color-bg-light:   #{$bg-light};
+
+  // Text
+  --color-text-default:   #{$text-default};
+  --color-text-secondary: #{$text-secondary};
+  --color-text-tertiary:  #{$text-tertiary};
+  --color-text-disabled:  #{$text-disabled};
+
+  // Borders
+  --color-border-light:   #{$border-light};
+  --color-border-focus:   #{$border-focus};
+  --color-border-dark:    #{$border-dark};
+  --color-border-default: #{$border-default};
+
+  // Info
+  --color-info-extra-dark:  #{$info-extra-dark};
+  --color-info-dark:        #{$info-dark};
+  --color-info-main:        #{$info-main};
+  --color-info-light:       #{$info-light};
+  --color-info-extra-light: #{$info-extra-light};
+
+  // Success
+  --color-success-dark:  #{$success-dark};
+  --color-success-main:  #{$success-main};
+  --color-success-light: #{$success-light};
+
+  // Warnings
+  --color-warning-light: #{$warning-light};
+  --color-warning-main:  #{$warning-main};
+  --color-warning-dark:  #{$warning-dark};
+
+  // Errors
+  --color-error-light: #{$error-light};
+  --color-error-main:  #{$error-main};
+  --color-error-dark:  #{$error-dark};
+
+  // ------------------------------------------------------------
+  // Typography — Ideal Sans
+  // Weights from Figma: Light=300, Book=325, Medium=350
+  // ------------------------------------------------------------
+  --font-family-primary: 'Ideal Sans', sans-serif;
+
+  --font-size-hero:       38px;
+  --font-size-h1:         24px;
+  --font-size-h2:         20px;
+  --font-size-h3:         18px;
+  --font-size-h4:         16px;
+  --font-size-h5:         16px;
+  --font-size-body-1:     16px;
+  --font-size-body-2:     14px;
+  --font-size-body-3:     12px;
+  --font-size-accent-1:   16px;
+  --font-size-accent-2:   14px;
+  --font-size-accent-3:   12px;
+  --font-size-emphasis-1: 16px;
+  --font-size-emphasis-2: 14px;
+  --font-size-emphasis-3: 12px;
+  --font-size-subtitle-1: 14px;
+  --font-size-subtitle-2: 12px;
+  --font-size-subtitle-3: 10px;
+
+  --font-weight-light:    300;
+  --font-weight-book:     325;
+  --font-weight-medium:   350;
+
+  --line-height-base:     1.4; // ~140% as per Figma
+
+  --letter-spacing-hero:  -1.5px;
+  --letter-spacing-h1:    -0.25px;
+  --letter-spacing-tight: -0.25px; // subtitles
+  --letter-spacing-base:   0px;
+
+  // ------------------------------------------------------------
+  // Shadows — from Figma "Card Shadows" frame (node 15:3)
+  // ------------------------------------------------------------
+
+  // Card Shadow — used on content cards
+  // Background: #fbfbfb, border: 1px solid #e5e5e5, border-radius: 100px
+  --shadow-card:         0 2px 4px rgba(0, 0, 0, 0.10);
+  --shadow-card-border:  1px solid #e5e5e5;
+  --shadow-card-radius:  8px;
+  --shadow-card-bg:      #fbfbfb;
+
+  // Named effect styles from Figma style library
+  --shadow-card-1: 0 2px 4px rgba(12, 35, 60, 0.08);
+  --shadow-card-2: 0 2px 4px rgba(12, 35, 60, 0.08);
+  --shadow-panel:  0 0 12.1px rgba(12, 35, 60, 0.07);
+  --shadow-prompt: 1px 2px 4px rgba(0, 0, 0, 0.10);
+}
+
+// ------------------------------------------------------------
+// 13. TYPOGRAPHY MIXINS
+// Ideal Sans font weights: Light (300) · Book (325) · Medium (350)
+// ------------------------------------------------------------
+
+// Hero — 38px / Medium (350)
+@mixin type-hero {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-hero);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-base);
+  letter-spacing: var(--letter-spacing-hero);
+}
+
+// h1 — 24px / Medium (350)
+@mixin type-h1 {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-base);
+  letter-spacing: var(--letter-spacing-h1);
+}
+
+// h2 — 20px / Medium (350)
+@mixin type-h2 {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-base);
+  letter-spacing: var(--letter-spacing-base);
+}
+
+// h3 — 18px / Medium (350)
+@mixin type-h3 {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-base);
+  letter-spacing: var(--letter-spacing-base);
+}
+
+// h4 — 16px / Medium (350)
+@mixin type-h4 {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-h4);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-base);
+  letter-spacing: var(--letter-spacing-base);
+}
+
+// h5 — 16px / Medium (350)
+@mixin type-h5 {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-h5);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-base);
+  letter-spacing: var(--letter-spacing-base);
+}
+
+// Body 1 — 16px / Light (300)
+@mixin type-body-1 {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-body-1);
+  font-weight: var(--font-weight-light);
+  line-height: var(--line-height-base);
+  letter-spacing: var(--letter-spacing-base);
+}
+
+// Body 2 — 14px / Light (300)
+@mixin type-body-2 {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-body-2);
+  font-weight: var(--font-weight-light);
+  line-height: var(--line-height-base);
+  letter-spacing: var(--letter-spacing-base);
+}
+
+// Body 3 — 12px / Light (300)
+@mixin type-body-3 {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-body-3);
+  font-weight: var(--font-weight-light);
+  line-height: var(--line-height-base);
+  letter-spacing: var(--letter-spacing-base);
+}
+
+// Accent 1 — 16px / Book (325)
+@mixin type-accent-1 {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-accent-1);
+  font-weight: var(--font-weight-book);
+  line-height: var(--line-height-base);
+  letter-spacing: var(--letter-spacing-base);
+}
+
+// Accent 2 — 14px / Book (325)
+@mixin type-accent-2 {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-accent-2);
+  font-weight: var(--font-weight-book);
+  line-height: var(--line-height-base);
+  letter-spacing: var(--letter-spacing-base);
+}
+
+// Accent 3 — 12px / Book (325)
+@mixin type-accent-3 {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-accent-3);
+  font-weight: var(--font-weight-book);
+  line-height: var(--line-height-base);
+  letter-spacing: var(--letter-spacing-base);
+}
+
+// Emphasis 1 — 16px / Medium (350)
+@mixin type-emphasis-1 {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-emphasis-1);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-base);
+  letter-spacing: var(--letter-spacing-base);
+}
+
+// Emphasis 2 — 14px / Medium (350)
+@mixin type-emphasis-2 {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-emphasis-2);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-base);
+  letter-spacing: var(--letter-spacing-base);
+}
+
+// Emphasis 3 — 12px / Medium (350)
+@mixin type-emphasis-3 {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-emphasis-3);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-base);
+  letter-spacing: var(--letter-spacing-base);
+}
+
+// Subtitle 1 — 14px / Book (325) / −0.25px tracking
+@mixin type-subtitle-1 {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-subtitle-1);
+  font-weight: var(--font-weight-book);
+  line-height: var(--line-height-base);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+// Subtitle 2 — 12px / Book (325) / −0.25px tracking
+@mixin type-subtitle-2 {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-subtitle-2);
+  font-weight: var(--font-weight-book);
+  line-height: var(--line-height-base);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+// Subtitle 3 — 10px / Book (325) / −0.25px tracking
+@mixin type-subtitle-3 {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-subtitle-3);
+  font-weight: var(--font-weight-book);
+  line-height: var(--line-height-base);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+// ------------------------------------------------------------
+// 14. SHADOW MIXINS
+// Source: Figma "Card Shadows" frame — node 15:3
+// ------------------------------------------------------------
+
+// Full card style — background + border + radius + shadow
+// Matches the card rectangle in Figma exactly
+@mixin card {
+  background-color: var(--shadow-card-bg);
+  border: var(--shadow-card-border);
+  border-radius: var(--shadow-card-radius);
+  box-shadow: var(--shadow-card);
+}
+
+// Named effect styles from the Figma style library
+// Card Shadow 1 — drop shadow: rgba(12,35,60,0.08) / offset 0 2px / blur 4px
+@mixin shadow-card-1 { box-shadow: var(--shadow-card-1); }
+.shadow-card-1{
+    @include shadow-card-1;
+}
+
+// Card Shadow 2 — drop shadow: rgba(12,35,60,0.08) / offset 0 2px / blur 4px
+@mixin shadow-card-2 { box-shadow: var(--shadow-card-2); }
+.shadow-card-2{
+    @include shadow-card-2;
+}
+
+// Panel (Left/Right) — drop shadow: rgba(12,35,60,0.07) / offset 0 0 / blur 12.1px
+@mixin shadow-panel  { box-shadow: var(--shadow-panel);  }
+
+// Prompt Pill — drop shadow: rgba(0,0,0,0.10) / offset 1px 2px / blur 4px
+@mixin shadow-prompt { box-shadow: var(--shadow-prompt); }
+
+// ------------------------------------------------------------
+// 15. BASE RESET & GLOBAL STYLES
+// ------------------------------------------------------------
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-body-1);
+  font-weight: var(--font-weight-light);
+  line-height: var(--line-height-base);
+  color: var(--color-text-default);
+  background-color: var(--color-bg-default);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1 { @include type-h1; }
+h2 { @include type-h2; }
+h3 { @include type-h3; }
+h4 { @include type-h4; }
+h5 { @include type-h5; }
+
+p {
+  @include type-body-1;
+}
+
+a {
+  color: var(--color-primary-main);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--color-primary-dark);
+    text-decoration: underline;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+  }
+}
+
+// ------------------------------------------------------------
+// 16. DARK THEME
+// Source: Figma "Style List (Dark)" — node 828:33337
+// Background: #1a2027  |  Card rows: #1a2027, rounded-[12px]
+//
+// Semantic token → dark value mapping extracted from Figma:
+//
+//   grey/50   (#fafafa) → Backgrounds / bg-light  → bg-default (dark: #1a2027)
+//   grey/300  (#e0e0e0) → Borders / border-light   → border-light (dark: #2d3748)
+//   grey/400  (#bdbdbd) → Texts / text-disabled     → text-disabled (dark: #4a5568)
+//   grey/500  (#9e9e9e) → Texts / text-tertiary      → text-tertiary (dark: #718096)
+//
+// AI gradients (dark variants):
+//   ai/brand-light   → linear-gradient(90deg, #303c36 0%, #223542 100%)
+//   ai/special-light → linear-gradient(270deg, #2d3c47 19%, #343247 123%)
+// ------------------------------------------------------------
+
+// Dark theme SCSS variables
+$dark-bg-surface:     #1a2027;  // page / card background
+$dark-bg-elevated:    #212936;  // elevated panels
+$dark-border-light:   #2d3748;  // subtle dividers
+$dark-border-default: #3d4f63;  // default borders
+$dark-text-primary:   #ffffff;  // primary text
+$dark-text-secondary: rgba(255, 255, 255, 0.70); // secondary / muted text
+$dark-text-tertiary:  #718096;  // tertiary text (grey/500)
+$dark-text-disabled:  #4a5568;  // disabled text (grey/400)
+
+// AI gradient — brand light (dark mode)
+$dark-ai-brand-light:   linear-gradient(90deg, #303c36 0%, #223542 100%);
+// AI gradient — special light (dark mode)
+$dark-ai-special-light: linear-gradient(270deg, #2d3c47 19.44%, #343247 123.33%);
+
+// Dark theme CSS custom properties
+[data-theme='dark'],
+.dark-theme {
+  // Backgrounds
+  --color-bg-default: #{$dark-bg-surface};
+  --color-bg-light:   #{$dark-bg-elevated};
+  --color-bg-white:   #{$dark-bg-surface};
+
+  // Text
+  --color-text-default:   #{$dark-text-primary};
+  --color-text-secondary: #{$dark-text-secondary};
+  --color-text-tertiary:  #{$dark-text-tertiary};
+  --color-text-disabled:  #{$dark-text-disabled};
+
+  // Borders
+  --color-border-light:   #{$dark-border-light};
+  --color-border-default: #{$dark-border-default};
+  --color-border-dark:    #{$dark-border-default};
+  --color-border-focus:   #{$primary-light};
+
+  // Primary — lighten for dark bg contrast
+  --color-primary-main:  #{$primary-light};
+  --color-primary-dark:  #{$primary-main};
+  --color-primary-light: #{$brand-blue-xxlight};
+
+  // Shadows — deeper on dark
+  --shadow-card-1: 0 2px 8px rgba(0, 0, 0, 0.40);
+  --shadow-card-2: 0 2px 8px rgba(0, 0, 0, 0.40);
+  --shadow-panel:  0 0 16px rgba(0, 0, 0, 0.35);
+  --shadow-prompt: 1px 2px 6px rgba(0, 0, 0, 0.40);
+
+  // Card surface
+  --shadow-card-bg:     #{$dark-bg-surface};
+  --shadow-card-border: 1px solid #{$dark-border-light};
+
+  // AI gradients
+  --gradient-ai-brand-light:   #{$dark-ai-brand-light};
+  --gradient-ai-special-light: #{$dark-ai-special-light};
+}
+
+// Dark theme mixin — apply programmatically
+@mixin dark-theme {
+  background-color: $dark-bg-surface;
+  color: $dark-text-primary;
+}
+
+// Dark card surface mixin
+@mixin dark-card {
+  background-color: $dark-bg-surface;
+  border: 1px solid $dark-border-light;
+  border-radius: 12px; // matches Figma row border-radius
+  color: $dark-text-primary;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.40);
+}
+
+// AI gradient background mixins (dark mode)
+@mixin dark-ai-brand-bg   { background: $dark-ai-brand-light;   }
+@mixin dark-ai-special-bg { background: $dark-ai-special-light; }

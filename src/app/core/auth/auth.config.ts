@@ -1,0 +1,89 @@
+import {
+  BrowserCacheLocation,
+  IPublicClientApplication,
+  InteractionType,
+  LogLevel,
+  PublicClientApplication,
+} from '@azure/msal-browser';
+import {
+  MsalGuardConfiguration,
+  MsalInterceptorConfiguration,
+} from '@azure/msal-angular';
+
+import { environment } from '../../../environments/environment';
+
+/**
+ * Entra ID (Azure AD) tenant + app registration values.
+ * Override per environment by editing this file, or wire to an env loader later.
+ */
+export const AUTH_CONFIG = {
+  clientId: environment.msal.clientId,
+  tenantId:  environment.msal.tenantId,
+  redirectUri:  environment.msal.redirectUri,
+  postLogoutRedirectUri:  environment.msal.postLogoutRedirectUri,
+  apiScopes:  environment.msal.apiScopes,
+  protectedApiBase:  environment.msal.protectedApiBase,
+  // App-role identifiers — must match the "value" field of App Roles configured
+  // on the Azure AD app registration. The ID token's `roles` claim ships these
+  // automatically once a user is assigned (no extra scope required).
+  // For local dev without App Roles configured, override via:
+  //   localStorage.setItem('wbct:devRole', 'Admin')   // or 'User'
+  roles: {
+    ADMIN: 'Admin',
+    USER:  'User',
+  },
+} as const;
+
+export type AppRole = (typeof AUTH_CONFIG.roles)[keyof typeof AUTH_CONFIG.roles];
+
+// Single shared instance. msal-browser v3+ requires the application to be
+// explicitly initialize()-d (and the redirect promise handled) BEFORE MsalGuard
+// runs — otherwise the guard fails with "unable to activate". We create the
+// instance once here so the app initializer (see app.config.ts) can await its
+// initialization before the router/guard activates.
+let _instance: IPublicClientApplication | null = null;
+
+export function msalInstanceFactory(): IPublicClientApplication {
+  if (_instance) return _instance;
+  _instance = new PublicClientApplication({
+    auth: {
+      clientId: AUTH_CONFIG.clientId,
+      authority: `https://login.microsoftonline.com/${AUTH_CONFIG.tenantId}`,
+      redirectUri: AUTH_CONFIG.redirectUri,
+      postLogoutRedirectUri: AUTH_CONFIG.postLogoutRedirectUri,
+    },
+    cache: {
+      cacheLocation: BrowserCacheLocation.LocalStorage,
+    },
+    system: {
+      loggerOptions: {
+        loggerCallback: (level, message) => {
+          if (level === LogLevel.Error) {
+            console.error('[MSAL]', message);
+          }
+        },
+        logLevel: LogLevel.Warning,
+        piiLoggingEnabled: false,
+      },
+    },
+  });
+  return _instance;
+}
+
+export function msalGuardConfigFactory(): MsalGuardConfiguration {
+  return {
+    interactionType: InteractionType.Redirect,
+    authRequest: { scopes: AUTH_CONFIG.apiScopes },
+  };
+}
+
+export function msalInterceptorConfigFactory(): MsalInterceptorConfiguration {
+  const protectedResourceMap = new Map<string, string[] | null>([
+    [AUTH_CONFIG.protectedApiBase, AUTH_CONFIG.apiScopes],
+    ['https://graph.microsoft.com/v1.0/me', ['User.Read']],
+  ]);
+  return {
+    interactionType: InteractionType.Redirect,
+    protectedResourceMap,
+  };
+}

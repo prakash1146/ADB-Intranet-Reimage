@@ -1,0 +1,62 @@
+{
+  "root": true,
+  "ignorePatterns": [
+    "dist/",
+    "coverage/",
+    "node_modules/",
+    "*.conf.js"
+  ],
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "project": ["tsconfig.app.json", "tsconfig.spec.json"],
+        "createDefaultProgram": true
+      },
+      "plugins": [
+        "@angular-eslint",
+        "@typescript-eslint"
+      ],
+      "extends": [
+        "plugin:@angular-eslint/recommended",
+        "plugin:@typescript-eslint/recommended"
+      ],
+      "rules": {
+        "@angular-eslint/component-selector": [
+          "error",
+          { "type": "element", "prefix": "adb", "style": "kebab-case" }
+        ],
+        "@angular-eslint/directive-selector": [
+          "error",
+          { "type": "attribute", "prefix": "adb", "style": "camelCase" }
+        ],
+        "@angular-eslint/no-empty-lifecycle-method": "warn",
+        "@angular-eslint/use-lifecycle-interface": "error",
+        "@typescript-eslint/no-explicit-any": "warn",
+        "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+        "@typescript-eslint/no-empty-function": "warn",
+        "@typescript-eslint/consistent-type-definitions": ["error", "interface"],
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "eqeqeq": ["error", "always"],
+        "curly": "error",
+        "no-console": ["warn", { "allow": ["warn"] }]
+      }
+    },
+    {
+      "files": ["*.html"],
+      "parser": "@angular-eslint/template-parser",
+      "plugins": [
+        "@angular-eslint/template"
+      ],
+      "extends": [
+        "plugin:@angular-eslint/template/recommended",
+        "plugin:@angular-eslint/template/accessibility"
+      ],
+      "rules": {
+        "@angular-eslint/template/prefer-self-closing-tags": "error",
+        "@angular-eslint/template/no-negated-async": "error"
+      }
+    }
+  ]
+}
