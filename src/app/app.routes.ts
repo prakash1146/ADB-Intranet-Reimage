@@ -4,11 +4,11 @@ import { MsalGuard } from '@azure/msal-angular';
 export const routes: Routes = [
     { 
         path: '', 
-        redirectTo: 'home', 
+        redirectTo: 'onboarding', 
         pathMatch: 'full' 
     },
     { 
-        path: 'home', 
+        path: 'onboarding', 
         canActivate: [MsalGuard],
         // canActivateChild:[MsalGuard],
         loadComponent : () =>{
@@ -19,7 +19,7 @@ export const routes: Routes = [
         path: 'dashboard',
         canActivate: [MsalGuard],
         loadComponent: () =>
-        import('./features/pages/dashboard/dashboard.component').then(m => m.DashboardComponent)
+        import('./features/dashboard/dashboard.component').then(m => m.DashboardComponent)
     }
 ];
 

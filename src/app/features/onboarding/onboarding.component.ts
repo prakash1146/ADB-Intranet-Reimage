@@ -3,15 +3,6 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../core/auth/auth.service';
 
-export interface Module {
-  id: string;
-  title: string;
-  desc: string;
-  badge: 'default' | 'recommended';
-  checked: boolean;
-  disabled?: boolean;
-}
-
 export interface Topic {
   label: string;
   aiSelected: boolean;
@@ -26,49 +17,38 @@ export interface Topic {
 })
 export class OnboardingComponent {
   private readonly authService = inject(AuthService);
+
   /* ── Step state ──────────────────────────────────────── */
-  step = signal(1);           // 1=welcome 2=tell-us 3=customise 4=loading 5=ready
+  step = signal(1);         // 1=welcome 2=personalize 3=review 4=loading 5=ready
   totalSteps = 3;
   activeDotStep = computed(() => Math.min(this.step(), this.totalSteps));
 
   /* ── User data ──────────────────────────────────────── */
-  readonly userName  = this.authService.displayName();
-  userTitle = 'Operations Officer';
-  userDept  = 'Central and West Asia Department';
-  /* Use a publicly available placeholder face */
-  avatarUrl = 'https://www.figma.com/api/mcp/asset/75576cbe-deb7-4dfa-b6e9-5be5cca27e57';
+  readonly userName = this.authService.displayName();
+  userTitle  = 'Operations Officer';
+  userDept   = 'Central and West Asia Department';
+  avatarUrl  = 'assets/images/avatar-placeholder.jpg';
 
-  /* ── Step 2: Topics ─────────────────────────────────── */
+  /* ── Step 2: Topics — matches Figma chips ───────────── */
   freeText = '';
-  summary  = `You're an Operations Officer in the Central and West Asia Department with a strong focus on Operations, Policy & Strategy, and Knowledge Management. Your work spans HR & Talent, Finance, Procurement, and Environmental considerations across the region. Beyond your core role, you bring a keen interest in Sustainable Development, Change Management, and Climate Technology — areas that reflect how you think about development impact and the communities your projects serve.`;
 
   topics: Topic[] = [
-    { label: 'Operations',           aiSelected: true,  selected: true  },
-    { label: 'Finance',              aiSelected: true,  selected: true  },
-    { label: 'HR & Talent',          aiSelected: true,  selected: true  },
-    { label: 'Legal',                aiSelected: false, selected: false },
-    { label: 'IT & Systems',         aiSelected: false, selected: false },
-    { label: 'Research',             aiSelected: false, selected: false },
-    { label: 'Policy & Strategy',    aiSelected: true,  selected: true  },
-    { label: 'Procurement',          aiSelected: true,  selected: true  },
-    { label: 'Environment',          aiSelected: true,  selected: true  },
-    { label: 'Communications',       aiSelected: false, selected: false },
-    { label: 'Partnerships',         aiSelected: false, selected: false },
-    { label: 'Knowledge Management', aiSelected: true,  selected: true  },
+    { label: 'Artificial Intelligence', aiSelected: true,  selected: true  },
+    { label: 'Machine Learning',        aiSelected: true,  selected: true  },
+    { label: 'Knowledge Management',    aiSelected: true,  selected: true  },
+    { label: 'Climate Risk',            aiSelected: true,  selected: true  },
+    { label: 'Procurement',             aiSelected: true,  selected: true  },
+    { label: 'Environment',             aiSelected: true,  selected: true  },
+    { label: 'Research',                aiSelected: false, selected: false },
+    { label: 'Policy & Strategy',       aiSelected: false, selected: false },
+    { label: 'South East Asia',         aiSelected: false, selected: false },
+    { label: 'Sustainability',          aiSelected: false, selected: false },
   ];
 
   selectedTopics = computed(() => this.topics.filter(t => t.selected).map(t => t.label));
 
-  /* ── Step 3: Modules ─────────────────────────────────── */
-  modules: Module[] = [
-    { id: 'quick-access',      title: 'Quick Access',       desc: 'Your favourite links, at your fingertips.',             badge: 'default',     checked: true, disabled: true },
-    { id: 'news',              title: 'News',                desc: 'All things ADB, curated for you.',                      badge: 'default',     checked: true, disabled: true },
-    { id: 'learnings',         title: 'Learnings',           desc: 'Get course recommendations to further your learnings.', badge: 'recommended', checked: true },
-    { id: 'career',            title: 'Career',              desc: 'Be updated on the latest job postings.',                badge: 'recommended', checked: true },
-    { id: 'adb-spotlight',     title: 'ADB Spotlight',       desc: 'Featured content and perspectives from across ADB.',    badge: 'recommended', checked: true },
-    { id: 'upcoming-events',   title: 'Upcoming Events',     desc: 'Find out what is happening around you.',                badge: 'recommended', checked: true },
-    { id: 'active-discussions',title: 'Active Discussions',  desc: 'Join the conversations happening across ADB.',          badge: 'recommended', checked: true },
-  ];
+  /* ── Step 3: AI Summary ─────────────────────────────── */
+  summary = `Yun Ji is an energy sector specialist focused on the Energy Transition Mechanism (ETM), where she supports the design and implementation of projects accelerating renewable energy adoption across Asia. Her work bridges technical due diligence, sovereign operations, and cross-departmental coordination with finance, policy, and climate teams. Known for her methodical and data-driven approach, she's often tapped for insights on clean-energy transitions and regional energy partnerships.`;
 
   /* ── Step 5: Orbit pills ─────────────────────────────── */
   orbitPills = computed(() => {
@@ -101,12 +81,13 @@ export class OnboardingComponent {
     }
   }
 
-  skipSetup() { this.router.navigate(['/dashboard']); }
-  undo()      { if (this.step() > 1) this.step.update(s => s - 1); }
-
-  toggleTopic(topic: Topic)   { topic.selected = !topic.selected; }
-  toggleModule(mod: Module)   { if (!mod.disabled) mod.checked = !mod.checked; }
-  navigateToStep(d:any){
-    this.step.set(d);
+  undo() {
+    if (this.step() > 1) this.step.update(s => s - 1);
   }
+
+  skipSetup() { this.router.navigate(['/dashboard']); }
+
+  navigateToStep(d: number) { this.step.set(d); }
+
+  toggleTopic(topic: Topic) { topic.selected = !topic.selected; }
 }

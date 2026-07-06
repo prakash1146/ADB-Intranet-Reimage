@@ -5,11 +5,9 @@
        ══════════════════════════════════════════ -->
   @if (step() === 1) {
     <section class="ob-section ob-welcome">
-      <div class="ob-content">
 
-        <h1 class="ob-hero">
-          <span class="hl-green">Welcome,</span>&nbsp;<span class="hl-green">{{ userName }}</span>
-        </h1>
+      <div class="ob-welcome-top">
+        <h1 class="ob-hero-gradient">Welcome, {{ userName }}</h1>
 
         <div class="ob-profile-card">
           <img class="ob-avatar" [src]="avatarUrl" [alt]="userName" />
@@ -19,214 +17,162 @@
             <p class="ob-profile-meta">{{ userDept }}</p>
           </div>
         </div>
-
       </div>
 
       <div class="ob-footer">
-        <button class="ob-pill-btn" type="button" (click)="nextStep()">
-          <span class="ob-pill-btn-text">Let's Get Started</span>
-          <svg class="ob-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </button>
-        <button class="ob-skip-link" type="button" (click)="skipSetup()">I'll do it later</button>
-        <div class="ob-dots">
+        <div class="ob-nav-btns ob-nav-btns--center">
+          <button class="ob-pill-btn" type="button" (click)="nextStep()">
+            <span class="ob-pill-btn-text">Let's Get Started</span>
+            <img src="assets/icons/arrow-right.svg" class="ob-icon ob-icon--gradient" alt="" aria-hidden="true" />
+          </button>
+          <button class="ob-skip-link" type="button" (click)="skipSetup()">I'll set up later</button>
+        </div>
+        <div class="ob-progress">
           @for (d of [1,2,3]; track d) {
-            <span class="ob-dot" [class.ob-dot-active]="step() === d" (click)="navigateToStep(d)"></span>
+            <span class="ob-progress-dot" [class.ob-progress-dot--active]="activeDotStep() === d" (click)="navigateToStep(d)"></span>
           }
         </div>
       </div>
+
     </section>
   }
 
   <!-- ══════════════════════════════════════════
-       STEP 2 · Tell us about you
+       STEP 2 · Help us personalize
        ══════════════════════════════════════════ -->
   @if (step() === 2) {
-    <section class="ob-section ob-tell">
+    <section class="ob-section ob-personalize">
+
       <div class="ob-content">
+        <h2 class="ob-hero-gradient ob-hero--38">Help us personalize your homepage</h2>
 
-        <h2 class="ob-hero">
-          <span class="hl-blue">Tell us</span>&nbsp;<span class="hl-green">about you</span>
-        </h2>
-
-        <p class="ob-subheading">Select the areas that describe your role and interests.</p>
-
-        <!-- Topic chips -->
-        <div class="ob-chips-wrap">
-          @for (topic of topics; track topic.label) {
-            <button
-              class="ob-chip"
-              [class.ob-chip-ai]="topic.selected && topic.aiSelected"
-              [class.ob-chip-selected]="topic.selected && !topic.aiSelected"
-              [class.ob-chip-default]="!topic.selected"
-              [attr.aria-pressed]="topic.selected"
-              type="button"
-              (click)="toggleTopic(topic)"
-            >
-              @if (topic.selected && topic.aiSelected) {
-                <svg class="ob-chip-spark" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 18a2 2 0 0 1 2 2a2 2 0 0 1 2 -2a2 2 0 0 1 -2 -2a2 2 0 0 1 -2 2m0 -12a2 2 0 0 1 2 2a2 2 0 0 1 2 -2a2 2 0 0 1 -2 -2a2 2 0 0 1 -2 2m-7 12a6 6 0 0 1 6 -6a6 6 0 0 1 -6 -6a6 6 0 0 1 -6 6a6 6 0 0 1 6 6"/></svg>
+        <div class="ob-personalize-body">
+          <div class="ob-chips-section">
+            <div>
+              <p class="ob-body-text ob-text-center">
+              Select the areas that describe your roles and interests.
+            </p>
+             <p class="ob-body-text ob-text-center">
+              Based on your profile, we've surfaced the ones you're most likely to be interested in.
+            </p>
+            </div>
+            <div class="ob-chips-wrap">
+              @for (topic of topics; track topic.label) {
+                <button
+                  class="ob-chip"
+                  [class.ob-chip--ai]="topic.selected && topic.aiSelected"
+                  [class.ob-chip--selected]="topic.selected && !topic.aiSelected"
+                  [class.ob-chip--default]="!topic.selected"
+                  [attr.aria-pressed]="topic.selected"
+                  type="button"
+                  (click)="toggleTopic(topic)"
+                >
+                  @if (topic.selected && topic.aiSelected) {
+                    <img src="assets/icons/sparkles.svg" class="ob-icon ob-icon--sm ob-icon--ai-white" alt="" aria-hidden="true" />
+                  }
+                  <span>{{ topic.label }}</span>
+                </button>
               }
-              <span class="ob-chip-label">{{ topic.label }}</span>
-            </button>
-          }
-        </div>
+            </div>
+          </div>
 
-        <!-- Free-text box -->
-        <div class="ob-textarea-section">
-          <label class="ob-textarea-label" for="ob-context">
-            To help us shape your homepage around the way you work, share more about your role, focus areas, or what you usually need to kickstart your day.
-          </label>
-          <div class="ob-textarea-card">
-            <textarea
-              id="ob-context"
-              class="ob-textarea"
-              [(ngModel)]="freeText"
-              placeholder="e.g. I often travel to Central Asia for project missions..."
-              rows="5"
-            ></textarea>
+          <div class="ob-optional-section">
+            <p class="ob-body-text ob-text-center">
+              (Optional) Tell us a little more. Describe more about your role, projects or the topics you'd like to keep up with
+            </p>
+            <div class="ob-textarea-wrap">
+              <textarea
+                class="ob-textarea"
+                [(ngModel)]="freeText"
+                placeholder="Examples: I support digital transformation projects in Southeast Asia, and like to keep up with AI, procurement and climate, finance"
+                rows="4"
+              ></textarea>
+            </div>
           </div>
         </div>
-
       </div>
 
       <div class="ob-footer">
-        <button class="ob-pill-btn" type="button" (click)="nextStep()">
-          <span class="ob-pill-btn-text">Next</span>
-          <svg class="ob-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </button>
-        <div class="ob-dots">
+        <div class="ob-nav-btns">
+          <button class="ob-pill-btn" type="button" (click)="undo()">
+            <img src="assets/icons/arrow-left.svg" class="ob-icon ob-icon--gradient" alt="" aria-hidden="true" />
+            <span class="ob-pill-btn-text">Previous</span>
+          </button>
+          <button class="ob-pill-btn" type="button" (click)="nextStep()">
+            <span class="ob-pill-btn-text">Next</span>
+            <img src="assets/icons/arrow-right.svg" class="ob-icon ob-icon--gradient" alt="" aria-hidden="true" />
+          </button>
+        </div>
+        <div class="ob-progress">
           @for (d of [1,2,3]; track d) {
-            <span class="ob-dot" [class.ob-dot-active]="step() === d" (click)="navigateToStep(d)"></span>
+            <span class="ob-progress-dot" [class.ob-progress-dot--active]="activeDotStep() === d" (click)="navigateToStep(d)"></span>
           }
         </div>
       </div>
+
     </section>
   }
 
   <!-- ══════════════════════════════════════════
-       STEP 2b · Review profile (morphed heading)
-       Shown as an inset below step 2 chips in the
-       original; we show it as a card on the same step
-       but the user already clicked Next — here it's
-       presented as a review modal-card triggered after
-       Next. We render this as step 2 after textarea submit
-       by toggling showReview. For simplicity we show it
-       as step 2 with a toggle.
-       ══════════════════════════════════════════ -->
-
-  <!-- ══════════════════════════════════════════
-       STEP 3 · Here's what we know about you
-       (Summary + Customise homepage)
-       Combines review card at top
+       STEP 3 · Review your profile
        ══════════════════════════════════════════ -->
   @if (step() === 3) {
-    <section class="ob-section ob-customise">
-      <div class="ob-content ob-content-wide">
+    <section class="ob-section ob-review">
 
-        <h2 class="ob-hero ob-hero-sm">
-          <span class="hl-blue">Here's what we</span>&nbsp;<span class="hl-green">know about you</span>
-        </h2>
+      <div class="ob-content">
+        <div class="ob-review-heading">
+          <h2 class="ob-hero-gradient ob-hero--38">Review your profile</h2>
+          <p class="ob-body-text ob-text-center">Here's how we will set up the content on your homepage for you:</p>
+        </div>
 
-        <!-- Summary card -->
         <div class="ob-summary-card">
           <div class="ob-summary-header">
             <div class="ob-summary-title">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#007DB7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 18a2 2 0 0 1 2 2a2 2 0 0 1 2 -2a2 2 0 0 1 -2 -2a2 2 0 0 1 -2 2m0 -12a2 2 0 0 1 2 2a2 2 0 0 1 2 -2a2 2 0 0 1 -2 -2a2 2 0 0 1 -2 2m-7 12a6 6 0 0 1 6 -6a6 6 0 0 1 -6 -6a6 6 0 0 1 -6 6a6 6 0 0 1 6 6"/></svg>
+              <img src="assets/icons/sparkles.svg" class="ob-icon ob-icon--ai-purple" alt="" aria-hidden="true" />
               <span class="ob-summary-label">Summary</span>
             </div>
             <div class="ob-summary-actions">
-              <button class="ob-undo-btn" type="button" (click)="undo()">Undo</button>
-              <button class="ob-regen-btn" type="button">
-                <span class="ob-regen-inner">Regenerate</span>
+              <button class="ob-text-btn" type="button" (click)="undo()">
+                <img src="assets/icons/arrow-back-up.svg" class="ob-icon ob-icon--blue" alt="" aria-hidden="true" />
+                Undo
+              </button>
+              <button class="ob-pill-btn ob-pill-btn--sm" type="button">
+                <img src="assets/icons/wand.svg" class="ob-icon ob-icon--gradient ob-icon--sm" alt="" aria-hidden="true" />
+                <span class="ob-pill-btn-text">Regenerate</span>
               </button>
             </div>
           </div>
+
           <p class="ob-summary-text">{{ summary }}</p>
+
           <hr class="ob-summary-divider" />
+
           <div class="ob-summary-chips">
             @for (t of selectedTopics(); track t) {
               <span class="ob-tag">{{ t }}</span>
             }
           </div>
         </div>
-
-        <!-- Customise section -->
-        <div class="ob-customise-layout">
-
-          <!-- Left: dashboard preview -->
-          <div class="ob-customise-left">
-            <div class="ob-dash-preview">
-              <img src="/assets/dashboard-preview.png" alt="Homepage preview" class="ob-dash-img" onerror="this.style.display='none'" />
-              <div class="ob-dash-placeholder">
-                <div class="ob-dash-ph-header">
-                  <div class="ob-dash-ph-bar ob-dash-ph-bar--blue"></div>
-                  <div class="ob-dash-ph-dots">
-                    <span></span><span></span>
-                  </div>
-                </div>
-                <div class="ob-dash-ph-greeting">Good evening, Jane.</div>
-                <div class="ob-dash-ph-sections">
-                  @for (s of [1,2,3,4]; track s) {
-                    <div class="ob-dash-ph-section">
-                      <div class="ob-dash-ph-section-title"></div>
-                      <div class="ob-dash-ph-cards">
-                        <div class="ob-dash-ph-card"></div>
-                        <div class="ob-dash-ph-card"></div>
-                        <div class="ob-dash-ph-card"></div>
-                      </div>
-                    </div>
-                  }
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Right: module toggles -->
-          <div class="ob-customise-right">
-            <p class="ob-customise-intro">
-              We have preselected modules most relevant to you. Customise the content you'd like to see on your dashboard — you can always change them later.
-            </p>
-            <div class="ob-modules-grid">
-              @for (mod of modules; track mod.id) {
-                <div
-                  class="ob-module-card"
-                  [class.ob-module-checked]="mod.checked"
-                  [class.ob-module-disabled]="mod.disabled"
-                  [attr.role]="'checkbox'"
-                  [attr.aria-checked]="mod.checked"
-                  (click)="toggleModule(mod)"
-                  (keydown.space)="toggleModule(mod)"
-                  [attr.tabindex]="mod.disabled ? -1 : 0"
-                >
-                  <div class="ob-module-text">
-                    <p class="ob-module-title">{{ mod.title }}</p>
-                    <p class="ob-module-badge" [class.ob-badge-default]="mod.badge === 'default'" [class.ob-badge-rec]="mod.badge === 'recommended'">
-                      {{ mod.badge === 'default' ? 'Default' : 'Recommended for you' }}
-                    </p>
-                    <p class="ob-module-desc">{{ mod.desc }}</p>
-                  </div>
-                  <div class="ob-module-check" [class.ob-module-check-visible]="mod.checked" aria-hidden="true">
-                    <svg width="11" height="8" viewBox="0 0 11 8" fill="none"><path d="M1 4L4 7L10 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  </div>
-                </div>
-              }
-            </div>
-          </div>
-
-        </div>
-
       </div>
 
       <div class="ob-footer">
-        <button class="ob-pill-btn" type="button" (click)="nextStep()">
-          <span class="ob-pill-btn-text">Next Step</span>
-          <svg class="ob-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </button>
-        <div class="ob-dots">
+        <div class="ob-nav-btns">
+          <button class="ob-pill-btn" type="button" (click)="undo()">
+            <img src="assets/icons/arrow-left.svg" class="ob-icon ob-icon--gradient" alt="" aria-hidden="true" />
+            <span class="ob-pill-btn-text">Previous</span>
+          </button>
+          <button class="ob-pill-btn" type="button" (click)="nextStep()">
+            <span class="ob-pill-btn-text">Next</span>
+            <img src="assets/icons/arrow-right.svg" class="ob-icon ob-icon--gradient" alt="" aria-hidden="true" />
+          </button>
+        </div>
+        <div class="ob-progress">
           @for (d of [1,2,3]; track d) {
-            <span class="ob-dot" [class.ob-dot-active]="step() === d" (click)="navigateToStep(d)"></span>
+            <span class="ob-progress-dot" [class.ob-progress-dot--active]="activeDotStep() === d" (click)="navigateToStep(d)"></span>
           }
         </div>
       </div>
+
     </section>
   }
 
@@ -239,10 +185,9 @@
         <div class="ob-orb-glow"></div>
         <div class="ob-orb-sphere"></div>
       </div>
-      <p class="ob-loading-text">
-        <span class="hl-blue">Getting</span>&nbsp;<span class="hl-green">Things Ready...</span>
-      </p>
+      <p class="ob-hero-gradient ob-hero--38">Getting Things Ready...</p>
     </section>
+
   }
 
   <!-- ══════════════════════════════════════════
@@ -251,10 +196,9 @@
   @if (step() === 5) {
     <section class="ob-section ob-ready">
 
-      <!-- Orbit visual -->
       <div class="ob-orbit-stage" aria-hidden="true">
-        <div class="ob-orbit-ring ob-orbit-ring-inner"></div>
-        <div class="ob-orbit-ring ob-orbit-ring-outer"></div>
+        <div class="ob-orbit-ring ob-orbit-ring--inner"></div>
+        <div class="ob-orbit-ring ob-orbit-ring--outer"></div>
         <div class="ob-orbit-center">
           <img class="ob-orbit-avatar" [src]="avatarUrl" alt="" />
         </div>
@@ -270,14 +214,14 @@
       </div>
 
       <div class="ob-ready-copy">
-        <h2 class="ob-hero ob-hero-dark">Your homepage is ready.</h2>
-        <p class="ob-ready-sub">Everything is personalised and waiting for you.</p>
+        <h2 class="ob-hero-gradient ob-hero--38">Your homepage is ready.</h2>
+        <p class="ob-body-text ob-text-center">Everything is personalised and waiting for you.</p>
       </div>
 
-      <div class="ob-footer ob-footer-inline">
+      <div class="ob-footer ob-footer--inline">
         <button class="ob-pill-btn" type="button" (click)="nextStep()">
-          <span class="ob-pill-btn-text">Enter Homepage</span>
-          <svg class="ob-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <span class="ob-pill-btn-text">Start Now</span>
+          <img src="assets/icons/arrow-right.svg" class="ob-icon ob-icon--gradient" alt="" aria-hidden="true" />
         </button>
       </div>
 

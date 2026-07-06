@@ -22,6 +22,7 @@ import {
   IconArrowUp,
   IconArrowDown,
   IconArrowLeft,
+  IconArrowRight,
   IconChevronRight,
   IconChevronLeft,
   IconChevronDown,
@@ -77,6 +78,9 @@ import {
   IconLanguage,
   IconLayoutGrid,
   IconArrowsShuffle,
+  IconWand,
+  IconRotateClockwise2,
+  IconArrowBackUp,
 } from '@tabler/icons-angular';
 import {
   MSAL_GUARD_CONFIG,
@@ -187,6 +191,10 @@ export const appConfig: ApplicationConfig = {
       IconLanguage,
       IconLayoutGrid,
       IconArrowsShuffle,
+      IconArrowRight,
+      IconWand,
+      IconRotateClockwise2,
+      IconArrowBackUp,
     }),
   ]
 };
