@@ -1,0 +1,32 @@
+.chip {
+  display: inline-flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 4px;
+  border-radius: 100px;
+  border: 1px solid;
+
+  &--primary {
+    border-color: var(--color-blue);
+    .chip__label { color: var(--color-blue); }
+  }
+
+  &--default {
+    border-color: var(--color-grey-400);
+    .chip__label { color: var(--color-grey-400); }
+  }
+}
+
+.chip__label {
+  font-family: var(--font-family-base);
+  font-size: 12px;
+  font-weight: 325;
+  line-height: var(--line-height-base);
+  letter-spacing: -0.25px;
+  white-space: nowrap;
+  padding: 0 6px;
+  min-height: 24px;
+  display: flex;
+  align-items: center;
+  font-feature-settings: 'lnum' 1, 'pnum' 1;
+}

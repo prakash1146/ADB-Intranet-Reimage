@@ -4,7 +4,8 @@
 // ADB Intranet — Global Styles
 // Source: ADB Design Repository (Figma)
 // ============================================================
-
+/* ---------- Google Fonts ---------- */
+//@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 // ------------------------------------------------------------
 // 1. BRAND BLUE
 // ------------------------------------------------------------
@@ -105,6 +106,14 @@ $error-dark:  #d32f2f;
   --color-brand-blue-alt:       #{$brand-blue-alt};
   --color-brand-blue-bright:    #{$brand-blue-bright};
   --color-brand-blue-light-alt: #{$brand-blue-light-alt};
+  --color-green:        #7cbf3e;
+  --color-green-dark:   #5a9a2a;
+  --color-blue:         #007db7;
+  --color-blue-dark:    #0277bd;
+  --color-teal:         #00b6da;
+  --color-purple:       #9b59d0;
+  --color-purple-light: #c084fc;
+
 
   // Primary
   --color-primary-light: #{$primary-light};
@@ -164,6 +173,46 @@ $error-dark:  #d32f2f;
   --color-error-light: #{$error-light};
   --color-error-main:  #{$error-main};
   --color-error-dark:  #{$error-dark};
+
+    /* Brand */
+  --color-green:        #7cbf3e;
+  --color-green-dark:   #5a9a2a;
+  --color-blue:         #007db7;
+  --color-blue-dark:    #0277bd;
+  --color-teal:         #00b6da;
+  --color-purple:       #9b59d0;
+  --color-purple-light: #c084fc;
+  /* Neutrals */
+  --color-black:        #1a1a2e;
+  --color-grey-900:     #212121;
+  --color-grey-700:     #616161;
+  --color-grey-400:     #9e9e9e;
+  --color-grey-200:     #e5e7eb;
+  --color-grey-100:     #f5f5f5;
+  --color-white:        #ffffff;
+  --color-surface:      #f9fdff;
+  /* Gradients */
+  --gradient-heading-green: #5a9a2a;
+  --gradient-heading-blue:  #007db7;
+  --gradient-btn-border: linear-gradient(90deg, #7cbf3e, #007db7);
+  /* Background: soft green top-left, white center, soft blue-teal right */
+  --bg-gradient: radial-gradient(ellipse at 0% 0%, rgba(180, 220, 130, 0.45) 0%, transparent 55%),
+                 radial-gradient(ellipse at 100% 40%, rgba(180, 220, 240, 0.55) 0%, transparent 60%),
+                 radial-gradient(ellipse at 70% 100%, rgba(200, 230, 250, 0.3) 0%, transparent 50%),
+                 #f8fcff;
+  /* Shadows */
+  --shadow-card:    0 2px 20px rgba(0, 125, 183, 0.1), 0 1px 4px rgba(0,0,0,0.05);
+  --shadow-card-lg: 0 4px 40px rgba(0, 125, 183, 0.12), 0 1px 8px rgba(0,0,0,0.06);
+  --shadow-module:  0 2px 12px rgba(0, 0, 0, 0.06);
+  /* Radius */
+  --radius-sm:   8px;
+  --radius-md:   12px;
+  --radius-lg:   16px;
+  --radius-xl:   24px;
+  --radius-pill: 100px;
+  /* Typography */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --line-height: 1.5;
 
   // ------------------------------------------------------------
   // Typography — Ideal Sans
@@ -436,12 +485,22 @@ html {
 }
 
 body {
-  font-family: var(--font-family-primary);
-  font-size: var(--font-size-body-1);
-  font-weight: var(--font-weight-light);
-  line-height: var(--line-height-base);
-  color: var(--color-text-default);
-  background-color: var(--color-bg-default);
+
+  font-size: 16px;
+  line-height: var(--line-height);
+  color: var(--color-grey-900);
+  background: var(--bg-gradient);
+  background-attachment: fixed;
+  overflow: hidden; /* single-page onboarding, no scroll */
+
+
+
+   font-family: var(--font-family-primary);
+   font-size: var(--font-size-body-1);
+  // font-weight: var(--font-weight-light);
+   line-height: var(--line-height);
+  // color: var(--color-text-default);
+  // background-color: var(--color-bg-default);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

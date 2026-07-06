@@ -1,0 +1,52 @@
+<section class="welcome-page">
+
+  <div class="welcome-page__top">
+
+    <h1 class="welcome-page__heading gradient-text">
+      Welcome, {{ userName }}.
+    </h1>
+
+    <div class="welcome-page__card profile-card">
+      <div class="welcome-page__card-inner">
+        <div class="welcome-page__user-row">
+
+          <div class="welcome-page__avatar-wrap">
+            <img
+              class="welcome-page__avatar-base avatar"
+              [src]="avatarUrl"
+              [alt]="userName"
+              width="80" height="80"
+            />
+            <img
+              class="welcome-page__avatar-overlay"
+              [src]="avatarOverlayUrl"
+              alt="" aria-hidden="true"
+            />
+          </div>
+
+          <div class="welcome-page__user-info">
+            <p class="welcome-page__user-name">{{ userName }}</p>
+            <p class="welcome-page__user-subtitle">{{ userTitle }}</p>
+            <p class="welcome-page__user-subtitle">{{ userDepartment }}</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="welcome-page__actions">
+
+    <button class="pill-btn" type="button" (click)="getStarted()" aria-label="Let's Get Started">
+      <span>Let's Get Started</span>
+      <img class="welcome-page__arrow-icon" [src]="arrowRightUrl" alt="" aria-hidden="true" width="24" height="24" />
+    </button>
+
+    <button class="link-btn" type="button" (click)="setupLater()">
+      I'll set up later
+    </button>
+
+  </div>
+
+</section>

@@ -1,0 +1,63 @@
+<section class="personalize-page">
+
+  <div class="personalize-page__content">
+
+    <div class="personalize-page__header">
+      <h1 class="personalize-page__heading gradient-text">
+        Help us personalize your homepage
+      </h1>
+    </div>
+
+    <div class="personalize-page__body">
+
+      <!-- Topics selection -->
+      <div class="personalize-page__section">
+        <p class="personalize-page__body-text">
+          Select the areas that describe your roles and interests. Based on your profile, some have already been preselected for you:
+        </p>
+        <div class="personalize-page__chips">
+          @for (topic of topics; track topic) {
+            <button
+              class="personalize-page__chip-btn"
+              [class.personalize-page__chip-btn--selected]="isSelected(topic)"
+              (click)="toggleTopic(topic)"
+              type="button"
+            >
+              {{ topic }}
+            </button>
+          }
+        </div>
+      </div>
+
+      <!-- Free text -->
+      <div class="personalize-page__section">
+        <p class="personalize-page__body-text">
+          (Optional) Tell us a little more. Describe more about your role, projects or the topics you'd like to keep up with
+        </p>
+        <div class="personalize-page__textarea-wrap">
+          <div class="personalize-page__textarea-outer">
+            <div class="personalize-page__textarea-inner">
+              <textarea
+                class="personalize-page__textarea"
+                [(ngModel)]="freeText"
+                placeholder="Examples: I support digital transformation projects in Southeast Asia, and like to keep up with AI, procurement and climate, finance"
+                rows="4"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- CTA -->
+  <div class="personalize-page__actions">
+    <button class="pill-btn" type="button" (click)="next()">
+      <span>Next</span>
+      <img class="personalize-page__arrow" [src]="arrowRightUrl" alt="" aria-hidden="true" width="24" height="24" />
+    </button>
+  </div>
+
+</section>
