@@ -4,116 +4,242 @@
 // ============================================================
 
 // ------------------------------------------------------------
-// 1. FONT IMPORTS
+// 1. FONT IMPORTS — local Ideal Sans Pro (.otf)
 // ------------------------------------------------------------
-@import url('https://fonts.googleapis.com/css2?family=Ideal+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap');
+
+@font-face {
+  font-family: 'Ideal Sans';
+  src: url('/assets/fonts/Ideal_Sans/IdealSans-Thin-Pro.otf') format('opentype');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Ideal Sans';
+  src: url('/assets/fonts/Ideal_Sans/IdealSans-ThinItalic-Pro.otf') format('opentype');
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Ideal Sans';
+  src: url('/assets/fonts/Ideal_Sans/IdealSans-XLight-Pro.otf') format('opentype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Ideal Sans';
+  src: url('/assets/fonts/Ideal_Sans/IdealSans-XLightItalic-Pro.otf') format('opentype');
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Ideal Sans';
+  src: url('/assets/fonts/Ideal_Sans/IdealSans-Light-Pro.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Ideal Sans';
+  src: url('/assets/fonts/Ideal_Sans/IdealSans-LightItalic-Pro.otf') format('opentype');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Ideal Sans';
+  src: url('/assets/fonts/Ideal_Sans/IdealSans-Book-Pro.otf') format('opentype');
+  font-weight: 325;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Ideal Sans';
+  src: url('/assets/fonts/Ideal_Sans/IdealSans-BookItalic-Pro.otf') format('opentype');
+  font-weight: 325;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Ideal Sans';
+  src: url('/assets/fonts/Ideal_Sans/IdealSans-Medium-Pro.otf') format('opentype');
+  font-weight: 350;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Ideal Sans';
+  src: url('/assets/fonts/Ideal_Sans/IdealSans-MediumItalic-Pro.otf') format('opentype');
+  font-weight: 350;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Ideal Sans';
+  src: url('/assets/fonts/Ideal_Sans/IdealSans-Semibold-Pro.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Ideal Sans';
+  src: url('/assets/fonts/Ideal_Sans/IdealSans-SemiboldItalic-Pro.otf') format('opentype');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Ideal Sans';
+  src: url('/assets/fonts/Ideal_Sans/IdealSans-Bold-Pro.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Ideal Sans';
+  src: url('/assets/fonts/Ideal_Sans/IdealSans-BoldItalic-Pro.otf') format('opentype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Ideal Sans';
+  src: url('/assets/fonts/Ideal_Sans/IdealSans-Black-Pro.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Ideal Sans';
+  src: url('/assets/fonts/Ideal_Sans/IdealSans-BlackItalic-Pro.otf') format('opentype');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
 
 // ------------------------------------------------------------
 // 2. SCSS VARIABLES
 // ------------------------------------------------------------
 
 // Brand Blue
-$brand-blue-brand:     #0088c7;
-$brand-blue-mid:       #00a1cb;
-$brand-blue-xxlight:   #6de3f6;
-$brand-blue-alt:       #0099d8;
-$brand-blue-bright:    #009fd6;
+$brand-blue-brand: #0088c7;
+$brand-blue-mid: #00a1cb;
+$brand-blue-xxlight: #6de3f6;
+$brand-blue-alt: #0099d8;
+$brand-blue-bright: #009fd6;
 $brand-blue-light-alt: #00bee8;
 
 // Primary Blue
 $primary-light: #68c5ea;
-$primary-main:  #007db7;
-$primary-dark:  #0277bd;
+$primary-main: #007db7;
+$primary-dark: #0277bd;
 
 // Secondary Lime
-$secondary-main:  #c8da2b;
-$secondary-dark:  #9e9d24;
+$secondary-main: #c8da2b;
+$secondary-dark: #9e9d24;
 $secondary-light: #dce775;
 
 // Accents
-$accent-green:       #8dc63f;
-$accent-cyan:        #00b6da;
+$accent-green: #8dc63f;
+$accent-cyan: #00b6da;
 $accent-deep-orange: #e9532b;
-$accent-amber:       #ffc107;
-$accent-light-blue:  #63ccec;
-$accent-orange:      #f57f29;
-$accent-teal:        #00a5d2;
-$accent-yellow:      #f2c800;
+$accent-amber: #ffc107;
+$accent-light-blue: #63ccec;
+$accent-orange: #f57f29;
+$accent-teal: #00a5d2;
+$accent-yellow: #f2c800;
 
 // Backgrounds
 $bg-default: #f5f5f5;
-$bg-white:   #ffffff;
-$bg-light:   #fafafa;
+$bg-white: #ffffff;
+$bg-light: #fafafa;
 
 // Text
-$text-default:   #212121;
+$text-default: #212121;
 $text-secondary: #616161;
-$text-tertiary:  #9e9e9e;
-$text-disabled:  #bdbdbd;
+$text-tertiary: #9e9e9e;
+$text-disabled: #bdbdbd;
 
 // Borders
-$border-light:   #e0e0e0;
-$border-focus:   #007db7;
-$border-dark:    #9e9e9e;
+$border-light: #e0e0e0;
+$border-focus: #007db7;
+$border-dark: #9e9e9e;
 $border-default: #bdbdbd;
 
 // Info
-$info-extra-dark:  #01579b;
-$info-dark:        #0288d1;
-$info-main:        #03a9f4;
-$info-light:       #b3e5fc;
+$info-extra-dark: #01579b;
+$info-dark: #0288d1;
+$info-main: #03a9f4;
+$info-light: #b3e5fc;
 $info-extra-light: #e1f5fe;
 
 // Success
-$success-dark:  #2e7d32;
-$success-main:  #43a047;
+$success-dark: #2e7d32;
+$success-main: #43a047;
 $success-light: #c8e6c9;
 
 // Warnings
 $warning-light: #ffe0b2;
-$warning-main:  #f57c00;
-$warning-dark:  #e65100;
+$warning-main: #f57c00;
+$warning-dark: #e65100;
 
 // Errors
 $error-light: #fecdd2;
-$error-main:  #f44336;
-$error-dark:  #d32f2f;
+$error-main: #f44336;
+$error-dark: #d32f2f;
 
 // Dark theme
-$dark-bg-surface:     #1a2027;
-$dark-bg-elevated:    #212936;
-$dark-border-light:   #2d3748;
+$dark-bg-surface: #1a2027;
+$dark-bg-elevated: #212936;
+$dark-border-light: #2d3748;
 $dark-border-default: #3d4f63;
-$dark-text-primary:   #ffffff;
-$dark-text-secondary: rgba(255, 255, 255, 0.70);
-$dark-text-tertiary:  #718096;
-$dark-text-disabled:  #4a5568;
-$dark-ai-brand-light:   linear-gradient(90deg, #303c36 0%, #223542 100%);
+$dark-text-primary: #ffffff;
+$dark-text-secondary: rgba(255, 255, 255, 0.7);
+$dark-text-tertiary: #718096;
+$dark-text-disabled: #4a5568;
+$dark-ai-brand-light: linear-gradient(90deg, #303c36 0%, #223542 100%);
 $dark-ai-special-light: linear-gradient(270deg, #2d3c47 19.44%, #343247 123.33%);
 
 // ------------------------------------------------------------
 // 3. CSS CUSTOM PROPERTIES (Design Tokens)
 // ------------------------------------------------------------
 :root {
-
   // ── Fonts ─────────────────────────────────────────────────
   --font-family-primary: 'Ideal Sans', Arial, sans-serif;
-  --font-family-inter:   Inter, Arial, sans-serif;
-  --font-family-roboto:  Roboto, Arial, sans-serif;
+  --font-family-inter: Inter, Arial, sans-serif;
+  --font-family-roboto: Roboto, Arial, sans-serif;
 
   // ── Font sizes ────────────────────────────────────────────
-  --font-size-hero:       38px;
-  --font-size-h1:         24px;
-  --font-size-h2:         20px;
-  --font-size-h3:         18px;
-  --font-size-h4:         16px;
-  --font-size-h5:         16px;
-  --font-size-body-1:     16px;
-  --font-size-body-2:     14px;
-  --font-size-body-3:     12px;
-  --font-size-accent-1:   16px;
-  --font-size-accent-2:   14px;
-  --font-size-accent-3:   12px;
+  --font-size-hero: 38px;
+  --font-size-h1: 24px;
+  --font-size-h2: 20px;
+  --font-size-h3: 18px;
+  --font-size-h4: 16px;
+  --font-size-h5: 16px;
+  --font-size-body-1: 16px;
+  --font-size-body-2: 14px;
+  --font-size-body-3: 12px;
+  --font-size-accent-1: 16px;
+  --font-size-accent-2: 14px;
+  --font-size-accent-3: 12px;
   --font-size-emphasis-1: 16px;
   --font-size-emphasis-2: 14px;
   --font-size-emphasis-3: 12px;
@@ -122,56 +248,56 @@ $dark-ai-special-light: linear-gradient(270deg, #2d3c47 19.44%, #343247 123.33%)
   --font-size-subtitle-3: 10px;
 
   // ── Font weights ──────────────────────────────────────────
-  --font-weight-light:  300;  // Ideal Sans Light
-  --font-weight-book:   325;  // Ideal Sans Book
-  --font-weight-medium: 350;  // Ideal Sans Medium
+  --font-weight-light: 300; // Ideal Sans Light
+  --font-weight-book: 325; // Ideal Sans Book
+  --font-weight-medium: 350; // Ideal Sans Medium
 
   // ── Line heights & letter spacing ─────────────────────────
-  --line-height-base:     1.4;
-  --letter-spacing-hero:  -1.5px;
+  --line-height-base: 1.4;
+  --letter-spacing-hero: -1.5px;
   --letter-spacing-tight: -0.25px;
-  --letter-spacing-base:   0px;
+  --letter-spacing-base: 0px;
 
   // ── Brand palette ─────────────────────────────────────────
-  --color-brand-blue-brand:     #{$brand-blue-brand};
-  --color-brand-blue-mid:       #{$brand-blue-mid};
-  --color-brand-blue-xxlight:   #{$brand-blue-xxlight};
-  --color-brand-blue-alt:       #{$brand-blue-alt};
-  --color-brand-blue-bright:    #{$brand-blue-bright};
+  --color-brand-blue-brand: #{$brand-blue-brand};
+  --color-brand-blue-mid: #{$brand-blue-mid};
+  --color-brand-blue-xxlight: #{$brand-blue-xxlight};
+  --color-brand-blue-alt: #{$brand-blue-alt};
+  --color-brand-blue-bright: #{$brand-blue-bright};
   --color-brand-blue-light-alt: #{$brand-blue-light-alt};
 
   // ── Primary & secondary ───────────────────────────────────
   --color-primary-light: #{$primary-light};
-  --color-primary-main:  #{$primary-main};
-  --color-primary-dark:  #{$primary-dark};
+  --color-primary-main: #{$primary-main};
+  --color-primary-dark: #{$primary-dark};
 
-  --color-secondary-main:  #{$secondary-main};
-  --color-secondary-dark:  #{$secondary-dark};
+  --color-secondary-main: #{$secondary-main};
+  --color-secondary-dark: #{$secondary-dark};
   --color-secondary-light: #{$secondary-light};
 
   // ── Accents ───────────────────────────────────────────────
-  --color-accent-green:       #{$accent-green};
-  --color-accent-cyan:        #{$accent-cyan};
+  --color-accent-green: #{$accent-green};
+  --color-accent-cyan: #{$accent-cyan};
   --color-accent-deep-orange: #{$accent-deep-orange};
-  --color-accent-amber:       #{$accent-amber};
-  --color-accent-light-blue:  #{$accent-light-blue};
-  --color-accent-orange:      #{$accent-orange};
-  --color-accent-teal:        #{$accent-teal};
-  --color-accent-yellow:      #{$accent-yellow};
+  --color-accent-amber: #{$accent-amber};
+  --color-accent-light-blue: #{$accent-light-blue};
+  --color-accent-orange: #{$accent-orange};
+  --color-accent-teal: #{$accent-teal};
+  --color-accent-yellow: #{$accent-yellow};
 
   // ── Shorthand aliases (used throughout components) ────────
-  --color-green:        #7cbf3e;
-  --color-green-dark:   #5a9a2a;
-  --color-blue:         #{$primary-main};
-  --color-blue-dark:    #{$primary-dark};
-  --color-teal:         #{$accent-cyan};
-  --color-purple:       #9b59d0;
+  --color-green: #7cbf3e;
+  --color-green-dark: #5a9a2a;
+  --color-blue: #{$primary-main};
+  --color-blue-dark: #{$primary-dark};
+  --color-teal: #{$accent-cyan};
+  --color-purple: #9b59d0;
   --color-purple-light: #c084fc;
 
   // ── Neutrals ──────────────────────────────────────────────
-  --color-black:    #1a1a2e;
-  --color-white:    #ffffff;
-  --color-surface:  #f9fdff;
+  --color-black: #1a1a2e;
+  --color-white: #ffffff;
+  --color-surface: #f9fdff;
 
   --color-grey-900: #212121;
   --color-grey-700: #616161;
@@ -181,107 +307,107 @@ $dark-ai-special-light: linear-gradient(270deg, #2d3c47 19.44%, #343247 123.33%)
 
   // ── Backgrounds ───────────────────────────────────────────
   --color-bg-default: #{$bg-default};
-  --color-bg-white:   #{$bg-white};
-  --color-bg-light:   #{$bg-light};
+  --color-bg-white: #{$bg-white};
+  --color-bg-light: #{$bg-light};
 
   // Radial-gradient page background
   --bg-gradient:
-    radial-gradient(ellipse at 0% 0%,   rgba(180, 220, 130, 0.45) 0%, transparent 55%),
+    radial-gradient(ellipse at 0% 0%, rgba(180, 220, 130, 0.45) 0%, transparent 55%),
     radial-gradient(ellipse at 100% 40%, rgba(180, 220, 240, 0.55) 0%, transparent 60%),
-    radial-gradient(ellipse at 70% 100%, rgba(200, 230, 250, 0.30) 0%, transparent 50%),
-    #f8fcff;
+    radial-gradient(ellipse at 70% 100%, rgba(200, 230, 250, 0.3) 0%, transparent 50%), #f8fcff;
 
   // ── Text ──────────────────────────────────────────────────
-  --color-text-default:   #{$text-default};
+  --color-text-default: #{$text-default};
   --color-text-secondary: #{$text-secondary};
-  --color-text-tertiary:  #{$text-tertiary};
-  --color-text-disabled:  #{$text-disabled};
+  --color-text-tertiary: #{$text-tertiary};
+  --color-text-disabled: #{$text-disabled};
 
   // ── Borders ───────────────────────────────────────────────
-  --color-border-light:   #{$border-light};
-  --color-border-focus:   #{$border-focus};
-  --color-border-dark:    #{$border-dark};
+  --color-border-light: #{$border-light};
+  --color-border-focus: #{$border-focus};
+  --color-border-dark: #{$border-dark};
   --color-border-default: #{$border-default};
 
   // ── Semantic status ───────────────────────────────────────
-  --color-info-extra-dark:  #{$info-extra-dark};
-  --color-info-dark:        #{$info-dark};
-  --color-info-main:        #{$info-main};
-  --color-info-light:       #{$info-light};
+  --color-info-extra-dark: #{$info-extra-dark};
+  --color-info-dark: #{$info-dark};
+  --color-info-main: #{$info-main};
+  --color-info-light: #{$info-light};
   --color-info-extra-light: #{$info-extra-light};
 
-  --color-success-dark:  #{$success-dark};
-  --color-success-main:  #{$success-main};
+  --color-success-dark: #{$success-dark};
+  --color-success-main: #{$success-main};
   --color-success-light: #{$success-light};
 
   --color-warning-light: #{$warning-light};
-  --color-warning-main:  #{$warning-main};
-  --color-warning-dark:  #{$warning-dark};
+  --color-warning-main: #{$warning-main};
+  --color-warning-dark: #{$warning-dark};
 
   --color-error-light: #{$error-light};
-  --color-error-main:  #{$error-main};
-  --color-error-dark:  #{$error-dark};
+  --color-error-main: #{$error-main};
+  --color-error-dark: #{$error-dark};
 
   // ── Shadows ───────────────────────────────────────────────
-  --shadow-card:    0 2px 20px rgba(0, 125, 183, 0.10), 0 1px 4px rgba(0, 0, 0, 0.05);
+  --shadow-card: 0 2px 20px rgba(0, 125, 183, 0.1), 0 1px 4px rgba(0, 0, 0, 0.05);
   --shadow-card-lg: 0 4px 40px rgba(0, 125, 183, 0.12), 0 1px 8px rgba(0, 0, 0, 0.06);
-  --shadow-card-1:  0 2px 4px rgba(12, 35, 60, 0.08);
-  --shadow-card-2:  0 2px 4px rgba(12, 35, 60, 0.08);
-  --shadow-module:  0 2px 12px rgba(0, 0, 0, 0.06);
-  --shadow-panel:   0 0 12.1px rgba(12, 35, 60, 0.07);
-  --shadow-prompt:  1px 2px 4px rgba(0, 0, 0, 0.10);
+  --shadow-card-1: 0 2px 4px rgba(12, 35, 60, 0.08);
+  --shadow-card-2: 0 2px 4px rgba(12, 35, 60, 0.08);
+  --shadow-module: 0 2px 12px rgba(0, 0, 0, 0.06);
+  --shadow-panel: 0 0 12.1px rgba(12, 35, 60, 0.07);
+  --shadow-prompt: 1px 2px 4px rgba(0, 0, 0, 0.1);
 
-  --shadow-card-bg:     #fbfbfb;
+  --shadow-card-bg: #fbfbfb;
   --shadow-card-border: 1px solid #e5e5e5;
   --shadow-card-radius: 8px;
 
   // AI / glassmorphism shadows
-  --shadow-drop:    0px 2px 29.5px #{$primary-light};
-  --shadow-drop-1:  0px 0px 24px rgba(104, 197, 234, 0.2), 0px 0px 12px rgba(0, 125, 183, 0.3);
-  --shadow-drop-2:  0px 1px 1.5px rgba(0, 0, 0, 0.1), 0px 2.5px 3.7px rgba(0, 0, 0, 0.1);
-  --shadow-drop-3:  0px 0.5px 1px rgba(12, 35, 60, 0.08);
-  --shadow-drop-4:  0px 2px 4.9px rgba(0, 0, 0, 0.05);
-  --shadow-drop-5:  0px 0.2px 3.5px rgba(0, 0, 0, 0.06), 0px 0.7px 1.2px -0.25px rgba(0, 0, 0, 0.1);
-  --shadow-drop-6:  0px 0.4px 0.9px rgba(12, 35, 60, 0.08);
+  --shadow-drop: 0px 2px 29.5px #{$primary-light};
+  --shadow-drop-1: 0px 0px 24px rgba(104, 197, 234, 0.2), 0px 0px 12px rgba(0, 125, 183, 0.3);
+  --shadow-drop-2: 0px 1px 1.5px rgba(0, 0, 0, 0.1), 0px 2.5px 3.7px rgba(0, 0, 0, 0.1);
+  --shadow-drop-3: 0px 0.5px 1px rgba(12, 35, 60, 0.08);
+  --shadow-drop-4: 0px 2px 4.9px rgba(0, 0, 0, 0.05);
+  --shadow-drop-5: 0px 0.2px 3.5px rgba(0, 0, 0, 0.06), 0px 0.7px 1.2px -0.25px rgba(0, 0, 0, 0.1);
+  --shadow-drop-6: 0px 0.4px 0.9px rgba(12, 35, 60, 0.08);
   --shadow-inner:
-    0px 0px 8px 2px rgba(255, 255, 255, 0.24) inset,
-    0px 6px 16px rgba(174, 93, 237, 0.03) inset,
-    0px -4px 18.8px rgba(255, 255, 255, 0.8) inset,
-    0px 12px 32px -12px rgba(0, 0, 0, 0.13);
+    0px 0px 8px 2px rgba(255, 255, 255, 0.24) inset, 0px 6px 16px rgba(174, 93, 237, 0.03) inset,
+    0px -4px 18.8px rgba(255, 255, 255, 0.8) inset, 0px 12px 32px -12px rgba(0, 0, 0, 0.13);
 
   // ── Border radius ─────────────────────────────────────────
-  --radius-sm:   8px;
-  --radius-md:   12px;
-  --radius-lg:   16px;
-  --radius-xl:   24px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
   --radius-pill: 100px;
 
   // ── Gradients ─────────────────────────────────────────────
-  --gradient-btn-border:  linear-gradient(90deg, #7cbf3e, #007db7);
+  --gradient-btn-border: linear-gradient(90deg, #7cbf3e, #007db7);
   --gradient-heading-green: #5a9a2a;
-  --gradient-heading-blue:  #007db7;
+  --gradient-heading-blue: #007db7;
 
-  --AI-ai-brand-main:
-    linear-gradient(90deg, #{$accent-green}, #{$primary-main});
+  --AI-ai-brand-main: linear-gradient(90deg, #{$accent-green}, #{$primary-main});
 
   --AI-ai-brand-light:
     linear-gradient(90deg, rgba(141, 198, 63, 0.1), rgba(0, 125, 183, 0.1)) padding-box,
-    linear-gradient(265.72deg,
-      rgba(255, 255, 255, 0.62),
-      #ffe0f8 8.18%,
-      #fffecd 15.66%,
-      #c2ffa1 29.17%,
-      rgba(242, 158, 255, 0)
-    ) border-box,
-    linear-gradient(91.02deg,
-      rgba(255, 255, 255, 0.8),
-      rgba(125, 190, 81, 0.8) 30.77%,
-      rgba(42, 147, 155, 0.8) 70.67%,
-      rgba(255, 255, 255, 0) 96.15%
-    ) border-box,
+    linear-gradient(
+        265.72deg,
+        rgba(255, 255, 255, 0.62),
+        #ffe0f8 8.18%,
+        #fffecd 15.66%,
+        #c2ffa1 29.17%,
+        rgba(242, 158, 255, 0)
+      )
+      border-box,
+    linear-gradient(
+        91.02deg,
+        rgba(255, 255, 255, 0.8),
+        rgba(125, 190, 81, 0.8) 30.77%,
+        rgba(42, 147, 155, 0.8) 70.67%,
+        rgba(255, 255, 255, 0) 96.15%
+      )
+      border-box,
     linear-gradient(85.67deg, rgba(140, 197, 71, 0.18), rgba(41, 146, 156, 0.18)) border-box;
 
-  --AI-ai-special-main:  linear-gradient(270deg, #{$primary-light}, #ae5ded);
+  --AI-ai-special-main: linear-gradient(270deg, #{$primary-light}, #ae5ded);
 
   --AI-ai-special-light:
     linear-gradient(270deg, rgba(104, 197, 234, 0.1), rgba(174, 93, 237, 0.1)) padding-box,
@@ -293,37 +419,162 @@ $dark-ai-special-light: linear-gradient(270deg, #2d3c47 19.44%, #343247 123.33%)
 // Ideal Sans: Light (300) · Book (325) · Medium (350)
 // ------------------------------------------------------------
 
-@mixin type-hero       { font-family: var(--font-family-primary); font-size: var(--font-size-hero);       font-weight: var(--font-weight-medium); line-height: var(--line-height-base); letter-spacing: var(--letter-spacing-hero);  }
-@mixin type-h1         { font-family: var(--font-family-primary); font-size: var(--font-size-h1);         font-weight: var(--font-weight-medium); line-height: var(--line-height-base); letter-spacing: var(--letter-spacing-tight); }
-@mixin type-h2         { font-family: var(--font-family-primary); font-size: var(--font-size-h2);         font-weight: var(--font-weight-medium); line-height: var(--line-height-base); letter-spacing: var(--letter-spacing-base);  }
-@mixin type-h3         { font-family: var(--font-family-primary); font-size: var(--font-size-h3);         font-weight: var(--font-weight-medium); line-height: var(--line-height-base); letter-spacing: var(--letter-spacing-base);  }
-@mixin type-h4         { font-family: var(--font-family-primary); font-size: var(--font-size-h4);         font-weight: var(--font-weight-medium); line-height: var(--line-height-base); letter-spacing: var(--letter-spacing-base);  }
-@mixin type-h5         { font-family: var(--font-family-primary); font-size: var(--font-size-h5);         font-weight: var(--font-weight-medium); line-height: var(--line-height-base); letter-spacing: var(--letter-spacing-base);  }
-@mixin type-body-1     { font-family: var(--font-family-primary); font-size: var(--font-size-body-1);     font-weight: var(--font-weight-light);  line-height: var(--line-height-base); letter-spacing: var(--letter-spacing-base);  }
-@mixin type-body-2     { font-family: var(--font-family-primary); font-size: var(--font-size-body-2);     font-weight: var(--font-weight-light);  line-height: var(--line-height-base); letter-spacing: var(--letter-spacing-base);  }
-@mixin type-body-3     { font-family: var(--font-family-primary); font-size: var(--font-size-body-3);     font-weight: var(--font-weight-light);  line-height: var(--line-height-base); letter-spacing: var(--letter-spacing-base);  }
-@mixin type-accent-1   { font-family: var(--font-family-primary); font-size: var(--font-size-accent-1);   font-weight: var(--font-weight-book);   line-height: var(--line-height-base); letter-spacing: var(--letter-spacing-base);  }
-@mixin type-accent-2   { font-family: var(--font-family-primary); font-size: var(--font-size-accent-2);   font-weight: var(--font-weight-book);   line-height: var(--line-height-base); letter-spacing: var(--letter-spacing-base);  }
-@mixin type-accent-3   { font-family: var(--font-family-primary); font-size: var(--font-size-accent-3);   font-weight: var(--font-weight-book);   line-height: var(--line-height-base); letter-spacing: var(--letter-spacing-base);  }
-@mixin type-emphasis-1 { font-family: var(--font-family-primary); font-size: var(--font-size-emphasis-1); font-weight: var(--font-weight-medium); line-height: var(--line-height-base); letter-spacing: var(--letter-spacing-base);  }
-@mixin type-emphasis-2 { font-family: var(--font-family-primary); font-size: var(--font-size-emphasis-2); font-weight: var(--font-weight-medium); line-height: var(--line-height-base); letter-spacing: var(--letter-spacing-base);  }
-@mixin type-emphasis-3 { font-family: var(--font-family-primary); font-size: var(--font-size-emphasis-3); font-weight: var(--font-weight-medium); line-height: var(--line-height-base); letter-spacing: var(--letter-spacing-base);  }
-@mixin type-subtitle-1 { font-family: var(--font-family-primary); font-size: var(--font-size-subtitle-1); font-weight: var(--font-weight-book);   line-height: var(--line-height-base); letter-spacing: var(--letter-spacing-tight); }
-@mixin type-subtitle-2 { font-family: var(--font-family-primary); font-size: var(--font-size-subtitle-2); font-weight: var(--font-weight-book);   line-height: var(--line-height-base); letter-spacing: var(--letter-spacing-tight); }
-@mixin type-subtitle-3 { font-family: var(--font-family-primary); font-size: var(--font-size-subtitle-3); font-weight: var(--font-weight-book);   line-height: var(--line-height-base); letter-spacing: var(--letter-spacing-tight); }
+@mixin type-hero {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-hero);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-base);
+  letter-spacing: var(--letter-spacing-hero);
+}
+@mixin type-h1 {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-base);
+  letter-spacing: var(--letter-spacing-tight);
+}
+@mixin type-h2 {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-base);
+  letter-spacing: var(--letter-spacing-base);
+}
+@mixin type-h3 {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-base);
+  letter-spacing: var(--letter-spacing-base);
+}
+@mixin type-h4 {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-h4);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-base);
+  letter-spacing: var(--letter-spacing-base);
+}
+@mixin type-h5 {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-h5);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-base);
+  letter-spacing: var(--letter-spacing-base);
+}
+@mixin type-body-1 {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-body-1);
+  font-weight: var(--font-weight-light);
+  line-height: var(--line-height-base);
+  letter-spacing: var(--letter-spacing-base);
+}
+@mixin type-body-2 {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-body-2);
+  font-weight: var(--font-weight-light);
+  line-height: var(--line-height-base);
+  letter-spacing: var(--letter-spacing-base);
+}
+@mixin type-body-3 {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-body-3);
+  font-weight: var(--font-weight-light);
+  line-height: var(--line-height-base);
+  letter-spacing: var(--letter-spacing-base);
+}
+@mixin type-accent-1 {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-accent-1);
+  font-weight: var(--font-weight-book);
+  line-height: var(--line-height-base);
+  letter-spacing: var(--letter-spacing-base);
+}
+@mixin type-accent-2 {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-accent-2);
+  font-weight: var(--font-weight-book);
+  line-height: var(--line-height-base);
+  letter-spacing: var(--letter-spacing-base);
+}
+@mixin type-accent-3 {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-accent-3);
+  font-weight: var(--font-weight-book);
+  line-height: var(--line-height-base);
+  letter-spacing: var(--letter-spacing-base);
+}
+@mixin type-emphasis-1 {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-emphasis-1);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-base);
+  letter-spacing: var(--letter-spacing-base);
+}
+@mixin type-emphasis-2 {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-emphasis-2);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-base);
+  letter-spacing: var(--letter-spacing-base);
+}
+@mixin type-emphasis-3 {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-emphasis-3);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-base);
+  letter-spacing: var(--letter-spacing-base);
+}
+@mixin type-subtitle-1 {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-subtitle-1);
+  font-weight: var(--font-weight-book);
+  line-height: var(--line-height-base);
+  letter-spacing: var(--letter-spacing-tight);
+}
+@mixin type-subtitle-2 {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-subtitle-2);
+  font-weight: var(--font-weight-book);
+  line-height: var(--line-height-base);
+  letter-spacing: var(--letter-spacing-tight);
+}
+@mixin type-subtitle-3 {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-subtitle-3);
+  font-weight: var(--font-weight-book);
+  line-height: var(--line-height-base);
+  letter-spacing: var(--letter-spacing-tight);
+}
 
 // ------------------------------------------------------------
 // 5. SHADOW MIXINS
 // ------------------------------------------------------------
-@mixin card         { background-color: var(--shadow-card-bg); border: var(--shadow-card-border); border-radius: var(--shadow-card-radius); box-shadow: var(--shadow-card);   }
-@mixin shadow-card-1 { box-shadow: var(--shadow-card-1); }
-@mixin shadow-card-2 { box-shadow: var(--shadow-card-2); }
-@mixin shadow-panel  { box-shadow: var(--shadow-panel);  }
-@mixin shadow-prompt { box-shadow: var(--shadow-prompt); }
+@mixin card {
+  background-color: var(--shadow-card-bg);
+  border: var(--shadow-card-border);
+  border-radius: var(--shadow-card-radius);
+  box-shadow: var(--shadow-card);
+}
+@mixin shadow-card-1 {
+  box-shadow: var(--shadow-card-1);
+}
+@mixin shadow-card-2 {
+  box-shadow: var(--shadow-card-2);
+}
+@mixin shadow-panel {
+  box-shadow: var(--shadow-panel);
+}
+@mixin shadow-prompt {
+  box-shadow: var(--shadow-prompt);
+}
 
 // Utility classes
-.shadow-card-1 { @include shadow-card-1; }
-.shadow-card-2 { @include shadow-card-2; }
+.shadow-card-1 {
+  @include shadow-card-1;
+}
+.shadow-card-2 {
+  @include shadow-card-2;
+}
 
 // ------------------------------------------------------------
 // 6. BASE RESET & GLOBAL STYLES
@@ -354,19 +605,37 @@ body {
   overflow: hidden;
 }
 
-h1 { @include type-h1; }
-h2 { @include type-h2; }
-h3 { @include type-h3; }
-h4 { @include type-h4; }
-h5 { @include type-h5; }
-p  { @include type-body-1; }
+h1 {
+  @include type-h1;
+}
+h2 {
+  @include type-h2;
+}
+h3 {
+  @include type-h3;
+}
+h4 {
+  @include type-h4;
+}
+h5 {
+  @include type-h5;
+}
+p {
+  @include type-body-1;
+}
 
 a {
   color: var(--color-primary-main);
   text-decoration: none;
 
-  &:hover        { color: var(--color-primary-dark); text-decoration: underline; }
-  &:focus-visible { outline: 2px solid var(--color-border-focus); outline-offset: 2px; }
+  &:hover {
+    color: var(--color-primary-dark);
+    text-decoration: underline;
+  }
+  &:focus-visible {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+  }
 }
 
 // ------------------------------------------------------------
@@ -375,37 +644,50 @@ a {
 [data-theme='dark'],
 .dark-theme {
   --color-bg-default: #{$dark-bg-surface};
-  --color-bg-light:   #{$dark-bg-elevated};
-  --color-bg-white:   #{$dark-bg-surface};
+  --color-bg-light: #{$dark-bg-elevated};
+  --color-bg-white: #{$dark-bg-surface};
 
-  --color-text-default:   #{$dark-text-primary};
+  --color-text-default: #{$dark-text-primary};
   --color-text-secondary: #{$dark-text-secondary};
-  --color-text-tertiary:  #{$dark-text-tertiary};
-  --color-text-disabled:  #{$dark-text-disabled};
+  --color-text-tertiary: #{$dark-text-tertiary};
+  --color-text-disabled: #{$dark-text-disabled};
 
-  --color-border-light:   #{$dark-border-light};
+  --color-border-light: #{$dark-border-light};
   --color-border-default: #{$dark-border-default};
-  --color-border-dark:    #{$dark-border-default};
-  --color-border-focus:   #{$primary-light};
+  --color-border-dark: #{$dark-border-default};
+  --color-border-focus: #{$primary-light};
 
-  --color-primary-main:  #{$primary-light};
-  --color-primary-dark:  #{$primary-main};
+  --color-primary-main: #{$primary-light};
+  --color-primary-dark: #{$primary-main};
   --color-primary-light: #{$brand-blue-xxlight};
 
-  --shadow-card-1: 0 2px 8px rgba(0, 0, 0, 0.40);
-  --shadow-card-2: 0 2px 8px rgba(0, 0, 0, 0.40);
-  --shadow-panel:  0 0 16px rgba(0, 0, 0, 0.35);
-  --shadow-prompt: 1px 2px 6px rgba(0, 0, 0, 0.40);
+  --shadow-card-1: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-card-2: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-panel: 0 0 16px rgba(0, 0, 0, 0.35);
+  --shadow-prompt: 1px 2px 6px rgba(0, 0, 0, 0.4);
 
-  --shadow-card-bg:     #{$dark-bg-surface};
+  --shadow-card-bg: #{$dark-bg-surface};
   --shadow-card-border: 1px solid #{$dark-border-light};
 
-  --gradient-ai-brand-light:   #{$dark-ai-brand-light};
+  --gradient-ai-brand-light: #{$dark-ai-brand-light};
   --gradient-ai-special-light: #{$dark-ai-special-light};
 }
 
 // Dark theme mixins
-@mixin dark-theme    { background-color: $dark-bg-surface; color: $dark-text-primary; }
-@mixin dark-card     { background-color: $dark-bg-surface; border: 1px solid $dark-border-light; border-radius: 12px; color: $dark-text-primary; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.40); }
-@mixin dark-ai-brand-bg   { background: $dark-ai-brand-light;   }
-@mixin dark-ai-special-bg { background: $dark-ai-special-light; }
+@mixin dark-theme {
+  background-color: $dark-bg-surface;
+  color: $dark-text-primary;
+}
+@mixin dark-card {
+  background-color: $dark-bg-surface;
+  border: 1px solid $dark-border-light;
+  border-radius: 12px;
+  color: $dark-text-primary;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+@mixin dark-ai-brand-bg {
+  background: $dark-ai-brand-light;
+}
+@mixin dark-ai-special-bg {
+  background: $dark-ai-special-light;
+}
