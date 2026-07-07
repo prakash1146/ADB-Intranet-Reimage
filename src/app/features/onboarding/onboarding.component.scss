@@ -78,6 +78,10 @@
   white-space: pre-wrap;
 }
 
+.ob-body-text-325 {
+  font-weight: var(--font-weight-book);
+}
+
 .ob-text-center { text-align: center; }
 
 /* ═══════════════════════════════════════════════════════════
@@ -359,17 +363,16 @@
 
   /* Manually selected (non-AI): blue border */
   &.ob-chip--selected {
-    border-color: var(--color-blue);
-    background: rgba(0,125,183,0.08);
-    color: var(--color-blue);
+    color: var(--color-white);
+    border-color: var(--blue-700, #007DB7);
+    background: var(--blue-700, #007DB7);
   }
 
   /* Unselected: grey border */
   &.ob-chip--default {
-    border-color: var(--color-grey-200);
+    border-color: var(--color-blue);
     background: var(--color-white);
-    color: var(--color-grey-700);
-    &:hover { border-color: var(--color-blue); color: var(--color-blue); }
+    color: var(--color-blue);
   }
 }
 
@@ -520,7 +523,224 @@
 }
 
 /* ═══════════════════════════════════════════════════════════
-   STEP 4 — LOADING
+   STEP 4 — CUSTOMISE YOUR HOMEPAGE
+   ═══════════════════════════════════════════════════════════ */
+.ob-customise {
+  justify-content: space-between;
+  padding-top: 48px;
+  gap: 0;
+  overflow-y: auto;
+}
+
+.ob-content--wide {
+  max-width: 1080px;
+  gap: 32px;
+}
+
+.ob-customise-layout {
+  display: flex;
+  gap: 40px;
+  width: 100%;
+  align-items: flex-start;
+}
+
+/* ── Homepage preview panel ──────────────────────────────── */
+.ob-hp-preview {
+  flex: 0 0 340px;
+  width: 340px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-card-lg);
+  border: 1px solid var(--color-grey-200);
+  background: var(--color-white);
+}
+
+.ob-hp-preview-inner {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ob-hp-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.ob-hp-logo {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-medium);
+  font-size: 11px;
+  color: var(--color-blue);
+  letter-spacing: 0.5px;
+}
+
+.ob-hp-topbar-icons {
+  display: flex;
+  gap: 4px;
+}
+
+.ob-hp-icon-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-grey-200);
+}
+
+.ob-hp-greeting {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-medium);
+  font-size: 10px;
+  color: var(--color-accent-green);
+  text-align: center;
+  padding: 4px 0;
+}
+
+.ob-hp-search-bar {
+  height: 16px;
+  border-radius: var(--radius-pill);
+  background: var(--color-grey-100);
+  margin-bottom: 4px;
+}
+
+.ob-hp-modules-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ob-hp-mod-block {
+  height: 28px;
+  border-radius: 4px;
+  background: var(--color-grey-100);
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  transition: all 0.2s;
+  opacity: 0.4;
+
+  &--active {
+    opacity: 1;
+    background: rgba(0,125,183,0.05);
+    border-color: var(--color-grey-200);
+  }
+
+  &--highlighted {
+    border-color: var(--color-primary-main);
+    background: rgba(0,125,183,0.08);
+    opacity: 1;
+  }
+}
+
+.ob-hp-mod-label {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-book);
+  font-size: 8px;
+  color: var(--color-grey-700);
+}
+
+/* ── Module toggle list ──────────────────────────────────── */
+.ob-module-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.ob-module-subtitle {
+  margin-top: -8px;
+}
+
+.ob-module-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.ob-module-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-grey-200);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  &--highlighted {
+    border-color: var(--color-primary-main);
+    box-shadow: 0 0 0 2px rgba(0,125,183,0.12);
+  }
+}
+
+.ob-module-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2px;
+}
+
+.ob-module-name {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-body-2);
+  color: var(--color-grey-900);
+  line-height: var(--line-height-base);
+}
+
+.ob-module-checkbox {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  border: 1.5px solid var(--color-grey-200);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--color-white);
+  transition: all 0.2s;
+
+  &--checked {
+    background: var(--color-primary-main);
+    border-color: var(--color-primary-main);
+  }
+}
+
+.ob-module-status {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-book);
+  font-size: var(--font-size-body-3);
+  color: var(--color-grey-400);
+  line-height: var(--line-height-base);
+
+  &--recommended {
+    color: var(--color-primary-main);
+  }
+}
+
+.ob-module-desc {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-light);
+  font-size: var(--font-size-body-3);
+  color: var(--color-grey-700);
+  line-height: var(--line-height-base);
+}
+
+/* ── chips intro gap ─────────────────────────────────────── */
+.ob-chips-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: center;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   STEP 5 — LOADING
    ═══════════════════════════════════════════════════════════ */
 .ob-loading {
   justify-content: center;
@@ -565,7 +785,7 @@
 }
 
 /* ═══════════════════════════════════════════════════════════
-   STEP 5 — HOMEPAGE READY (orbit)
+   STEP 6 — HOMEPAGE READY (orbit)
    ═══════════════════════════════════════════════════════════ */
 .ob-ready {
   justify-content: flex-end;
@@ -647,6 +867,13 @@
 /* ═══════════════════════════════════════════════════════════
    RESPONSIVE
    ═══════════════════════════════════════════════════════════ */
+@media (max-width: 1000px) {
+  .ob-customise-layout { flex-direction: column; }
+  .ob-hp-preview { flex: none; width: 100%; max-width: 400px; align-self: center; }
+  .ob-module-grid { grid-template-columns: 1fr; }
+  .ob-content--wide { max-width: 800px; }
+}
+
 @media (max-width: 860px) {
   .ob-summary-card { width: 100%; padding: 16px; }
   .ob-profile-card { width: 100%; }

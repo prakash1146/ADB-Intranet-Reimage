@@ -7,7 +7,7 @@
     <section class="ob-section ob-welcome">
 
       <div class="ob-welcome-top">
-        <h1 class="ob-hero-gradient">Welcome, {{ userName }}</h1>
+        <h1 class="ob-hero-gradient">Welcome, {{ userName }}.</h1>
 
         <div class="ob-profile-card">
           <img class="ob-avatar" [src]="avatarUrl" [alt]="userName" />
@@ -28,7 +28,7 @@
           <button class="ob-skip-link" type="button" (click)="skipSetup()">I'll set up later</button>
         </div>
         <div class="ob-progress">
-          @for (d of [1,2,3]; track d) {
+          @for (d of progressDots; track d) {
             <span class="ob-progress-dot" [class.ob-progress-dot--active]="activeDotStep() === d" (click)="navigateToStep(d)"></span>
           }
         </div>
@@ -48,28 +48,20 @@
 
         <div class="ob-personalize-body">
           <div class="ob-chips-section">
-            <div>
-              <p class="ob-body-text ob-text-center">
-              Select the areas that describe your roles and interests.
-            </p>
-             <p class="ob-body-text ob-text-center">
-              Based on your profile, we've surfaced the ones you're most likely to be interested in.
-            </p>
+            <div class="ob-chips-intro">
+              <p class="ob-body-text ob-text-center m-b-20">Based on your profile, we've surfaced the ones you're most likely to be interested in.</p>
+              <p class="ob-body-text ob-text-center m-b-5 ob-body-text-325">Select the areas that describe your roles and interests.</p>
             </div>
             <div class="ob-chips-wrap">
               @for (topic of topics; track topic.label) {
                 <button
                   class="ob-chip"
-                  [class.ob-chip--ai]="topic.selected && topic.aiSelected"
-                  [class.ob-chip--selected]="topic.selected && !topic.aiSelected"
+                  [class.ob-chip--selected]="topic.selected"
                   [class.ob-chip--default]="!topic.selected"
                   [attr.aria-pressed]="topic.selected"
                   type="button"
                   (click)="toggleTopic(topic)"
                 >
-                  @if (topic.selected && topic.aiSelected) {
-                    <img src="assets/icons/sparkles.svg" class="ob-icon ob-icon--sm ob-icon--ai-white" alt="" aria-hidden="true" />
-                  }
                   <span>{{ topic.label }}</span>
                 </button>
               }
@@ -104,7 +96,7 @@
           </button>
         </div>
         <div class="ob-progress">
-          @for (d of [1,2,3]; track d) {
+          @for (d of progressDots; track d) {
             <span class="ob-progress-dot" [class.ob-progress-dot--active]="activeDotStep() === d" (click)="navigateToStep(d)"></span>
           }
         </div>
@@ -114,44 +106,73 @@
   }
 
   <!-- ══════════════════════════════════════════
-       STEP 3 · Review your profile
+       STEP 3 · Customise Your Homepage
        ══════════════════════════════════════════ -->
   @if (step() === 3) {
-    <section class="ob-section ob-review">
+    <section class="ob-section ob-customise">
 
-      <div class="ob-content">
-        <div class="ob-review-heading">
-          <h2 class="ob-hero-gradient ob-hero--38">Review your profile</h2>
-          <p class="ob-body-text ob-text-center">Here's how we will set up the content on your homepage for you:</p>
-        </div>
+      <div class="ob-content ob-content--wide">
+        <h2 class="ob-hero-gradient ob-hero--38">Customise Your Homepage</h2>
 
-        <div class="ob-summary-card">
-          <div class="ob-summary-header">
-            <div class="ob-summary-title">
-              <img src="assets/icons/sparkles.svg" class="ob-icon ob-icon--ai-purple" alt="" aria-hidden="true" />
-              <span class="ob-summary-label">Summary</span>
-            </div>
-            <div class="ob-summary-actions">
-              <button class="ob-text-btn" type="button" (click)="undo()">
-                <img src="assets/icons/arrow-back-up.svg" class="ob-icon ob-icon--blue" alt="" aria-hidden="true" />
-                Undo
-              </button>
-              <button class="ob-pill-btn ob-pill-btn--sm" type="button">
-                <img src="assets/icons/wand.svg" class="ob-icon ob-icon--gradient ob-icon--sm" alt="" aria-hidden="true" />
-                <span class="ob-pill-btn-text">Regenerate</span>
-              </button>
+        <div class="ob-customise-layout">
+
+          <!-- Left: homepage preview -->
+          <div class="ob-hp-preview">
+            <div class="ob-hp-preview-inner">
+              <div class="ob-hp-topbar">
+                <span class="ob-hp-logo">ADB</span>
+                <div class="ob-hp-topbar-icons">
+                  <span class="ob-hp-icon-dot"></span>
+                  <span class="ob-hp-icon-dot"></span>
+                  <span class="ob-hp-icon-dot"></span>
+                </div>
+              </div>
+              <div class="ob-hp-greeting">Good morning, {{ firstNameOnly }}.</div>
+              <div class="ob-hp-search-bar"></div>
+              <div class="ob-hp-modules-preview">
+                @for (mod of homepageModules; track mod.id) {
+                  <div class="ob-hp-mod-block" [class.ob-hp-mod-block--active]="mod.enabled" [class.ob-hp-mod-block--highlighted]="mod.id === highlightedModule">
+                    <span class="ob-hp-mod-label">{{ mod.name }}</span>
+                  </div>
+                }
+              </div>
             </div>
           </div>
 
-          <p class="ob-summary-text">{{ summary }}</p>
+          <!-- Right: module toggle list -->
+          <div class="ob-module-list">
+            <p class="ob-body-text">Based on your interests, we'll personalize your homepage experience.</p>
+            <p class="ob-body-text ob-module-subtitle">All homepage modules are enabled by default. The content you see within them will be tailored to your interests, and you can change your homepage layout at any time.</p>
 
-          <hr class="ob-summary-divider" />
-
-          <div class="ob-summary-chips">
-            @for (t of selectedTopics(); track t) {
-              <span class="ob-tag">{{ t }}</span>
-            }
+            <div class="ob-module-grid">
+              @for (mod of homepageModules; track mod.id) {
+                <div
+                  class="ob-module-card"
+                  [class.ob-module-card--on]="mod.enabled"
+                  [class.ob-module-card--highlighted]="mod.id === highlightedModule"
+                  (mouseenter)="highlightedModule = mod.id"
+                  (mouseleave)="highlightedModule = null"
+                  (click)="toggleModule(mod)"
+                >
+                  <div class="ob-module-card-header">
+                    <span class="ob-module-name">{{ mod.name }}</span>
+                    <span class="ob-module-checkbox" [class.ob-module-checkbox--checked]="mod.enabled" role="checkbox" [attr.aria-checked]="mod.enabled">
+                      @if (mod.enabled) {
+                        <svg width="12" height="10" viewBox="0 0 12 10" fill="none" aria-hidden="true">
+                          <path d="M1 5L4.5 8.5L11 1.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      }
+                    </span>
+                  </div>
+                  <span class="ob-module-status" [class.ob-module-status--recommended]="mod.recommended">
+                    {{ mod.recommended ? 'Recommended for you' : 'Default' }}
+                  </span>
+                  <p class="ob-module-desc">{{ mod.desc }}</p>
+                </div>
+              }
+            </div>
           </div>
+
         </div>
       </div>
 
@@ -167,7 +188,7 @@
           </button>
         </div>
         <div class="ob-progress">
-          @for (d of [1,2,3]; track d) {
+          @for (d of progressDots; track d) {
             <span class="ob-progress-dot" [class.ob-progress-dot--active]="activeDotStep() === d" (click)="navigateToStep(d)"></span>
           }
         </div>
@@ -177,7 +198,7 @@
   }
 
   <!-- ══════════════════════════════════════════
-       STEP 4 · Getting Things Ready (loading)
+       STEP 5 · Getting Things Ready (loading)
        ══════════════════════════════════════════ -->
   @if (step() === 4) {
     <section class="ob-section ob-loading">
@@ -187,11 +208,10 @@
       </div>
       <p class="ob-hero-gradient ob-hero--38">Getting Things Ready...</p>
     </section>
-
   }
 
   <!-- ══════════════════════════════════════════
-       STEP 5 · Your homepage is ready
+       STEP 6 · Your homepage is ready
        ══════════════════════════════════════════ -->
   @if (step() === 5) {
     <section class="ob-section ob-ready">

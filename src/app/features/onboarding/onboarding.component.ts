@@ -5,8 +5,15 @@ import { AuthService } from '../../core/auth/auth.service';
 
 export interface Topic {
   label: string;
-  aiSelected: boolean;
   selected: boolean;
+}
+
+export interface HomepageModule {
+  id: string;
+  name: string;
+  desc: string;
+  recommended: boolean;
+  enabled: boolean;
 }
 
 @Component({
@@ -19,8 +26,10 @@ export class OnboardingComponent {
   private readonly authService = inject(AuthService);
 
   /* ── Step state ──────────────────────────────────────── */
-  step = signal(1);         // 1=welcome 2=personalize 3=review 4=loading 5=ready
+  // 1=welcome 2=personalize 3=review 4=customise 5=loading 6=ready
+  step = signal(1);
   totalSteps = 3;
+  progressDots = [1, 2, 3];
   activeDotStep = computed(() => Math.min(this.step(), this.totalSteps));
 
   /* ── User data ──────────────────────────────────────── */
@@ -29,20 +38,24 @@ export class OnboardingComponent {
   userDept   = 'Central and West Asia Department';
   avatarUrl  = 'assets/images/avatar-placeholder.jpg';
 
-  /* ── Step 2: Topics — matches Figma chips ───────────── */
+  get firstNameOnly(): string {
+    return (this.userName || '').split(' ')[0];
+  }
+
+  /* ── Step 2: Topics ─────────────────────────────────── */
   freeText = '';
 
   topics: Topic[] = [
-    { label: 'Artificial Intelligence', aiSelected: true,  selected: true  },
-    { label: 'Machine Learning',        aiSelected: true,  selected: true  },
-    { label: 'Knowledge Management',    aiSelected: true,  selected: true  },
-    { label: 'Climate Risk',            aiSelected: true,  selected: true  },
-    { label: 'Procurement',             aiSelected: true,  selected: true  },
-    { label: 'Environment',             aiSelected: true,  selected: true  },
-    { label: 'Research',                aiSelected: false, selected: false },
-    { label: 'Policy & Strategy',       aiSelected: false, selected: false },
-    { label: 'South East Asia',         aiSelected: false, selected: false },
-    { label: 'Sustainability',          aiSelected: false, selected: false },
+    { label: 'Artificial Intelligence',   selected: false  },
+    { label: 'Machine Learning',          selected: false  },
+    { label: 'Knowledge Management',      selected: false  },
+    { label: 'Climate Risk',              selected: false  },
+    { label: 'Procurement',               selected: false  },
+    { label: 'Environment',               selected: false  },
+    { label: 'Research',                 selected: false },
+    { label: 'Policy & Strategy',        selected: false },
+    { label: 'South East Asia',          selected: false },
+    { label: 'Sustainability',           selected: false },
   ];
 
   selectedTopics = computed(() => this.topics.filter(t => t.selected).map(t => t.label));
@@ -50,7 +63,22 @@ export class OnboardingComponent {
   /* ── Step 3: AI Summary ─────────────────────────────── */
   summary = `Yun Ji is an energy sector specialist focused on the Energy Transition Mechanism (ETM), where she supports the design and implementation of projects accelerating renewable energy adoption across Asia. Her work bridges technical due diligence, sovereign operations, and cross-departmental coordination with finance, policy, and climate teams. Known for her methodical and data-driven approach, she's often tapped for insights on clean-energy transitions and regional energy partnerships.`;
 
-  /* ── Step 5: Orbit pills ─────────────────────────────── */
+  /* ── Step 4: Homepage modules ───────────────────────── */
+  highlightedModule: string | null = null;
+
+  homepageModules: HomepageModule[] = [
+    { id: 'quick-access',      name: 'Quick Access',      desc: 'Your favorite links, at your finger tips.',                           recommended: false, enabled: true },
+    { id: 'news',              name: 'News',              desc: 'All things ADB, curated for you.',                                    recommended: false, enabled: true },
+    { id: 'learnings',         name: 'Learnings',         desc: 'Get course recommendations to further your learnings.',               recommended: true,  enabled: true },
+    { id: 'career',            name: 'Career',            desc: 'Be updated of the latest job postings.',                              recommended: true,  enabled: true },
+    { id: 'adb-spotlight',     name: 'ADB Spotlight',     desc: 'Discover featured stories, media, and highlights from across ADB.',   recommended: true,  enabled: true },
+    { id: 'upcoming-events',   name: 'Upcoming Events',   desc: 'Find out what is happening around you.',                             recommended: true,  enabled: true },
+    { id: 'active-discussions',name: 'Active Discussions',desc: 'Get recommendations of people near you.',                            recommended: true,  enabled: true },
+  ];
+
+  toggleModule(mod: HomepageModule) { mod.enabled = !mod.enabled; }
+
+  /* ── Step 6: Orbit pills ─────────────────────────────── */
   orbitPills = computed(() => {
     const selected = this.topics.filter(t => t.selected);
     return selected.map((t, i) => {
