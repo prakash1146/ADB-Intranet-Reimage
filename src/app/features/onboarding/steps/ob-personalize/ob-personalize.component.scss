@@ -1,0 +1,118 @@
+.ob-personalize {
+  justify-content: space-between;
+  padding-top: 60px;
+  gap: 0;
+}
+
+.ob-personalize-body {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 100%;
+}
+
+.ob-chips-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+}
+
+.ob-chips-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: center;
+}
+
+.ob-chips-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  justify-content: center;
+  width: 100%;
+  max-width: 668px;
+}
+
+.ob-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px 4px 8px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-book);
+  font-size: var(--font-size-body-3);
+  letter-spacing: var(--letter-spacing-tight);
+  line-height: var(--line-height-base);
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.2s;
+  min-height: 32px;
+
+  &.ob-chip--ai {
+    border-color: var(--color-blue);
+    background: linear-gradient(135deg, var(--color-purple), var(--color-primary-dark));
+    color: var(--color-white);
+  }
+
+  &.ob-chip--selected {
+    color: var(--color-white);
+    border-color: var(--blue-700, #007DB7);
+    background: var(--blue-700, #007DB7);
+  }
+
+  &.ob-chip--default {
+    border-color: var(--color-blue);
+    background: var(--color-white);
+    color: var(--color-blue);
+  }
+}
+
+.ob-optional-section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+  width: 100%;
+}
+
+.ob-textarea-wrap {
+  width: 841px;
+  max-width: 100%;
+  background: rgba(255,255,255,0.95);
+  border: 1px solid rgba(255,255,255,0.6);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card-lg);
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+
+  &:focus-within {
+    box-shadow: var(--shadow-drop), var(--shadow-drop-1);
+  }
+}
+
+.ob-textarea {
+  width: 100%;
+  padding: 16px 24px;
+  border: none;
+  background: transparent;
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-light);
+  font-size: var(--font-size-body-1);
+  color: var(--color-grey-900);
+  resize: none;
+  outline: none;
+  line-height: var(--line-height-base);
+  box-sizing: border-box;
+
+  &::placeholder {
+    color: var(--color-grey-400);
+    font-weight: var(--font-weight-light);
+  }
+}
+
+@media (max-width: 720px) {
+  .ob-chips-wrap { max-width: 100%; }
+  .ob-textarea-wrap { width: 100%; }
+}

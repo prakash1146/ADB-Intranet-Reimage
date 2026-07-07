@@ -1,0 +1,32 @@
+<section class="ob-section ob-ready">
+
+  <div class="ob-orbit-stage" aria-hidden="true">
+    <div class="ob-orbit-ring ob-orbit-ring--inner"></div>
+    <div class="ob-orbit-ring ob-orbit-ring--outer"></div>
+    <div class="ob-orbit-center">
+      <img class="ob-orbit-avatar" [src]="avatarUrl()" alt="" />
+    </div>
+    @for (pill of orbitPills(); track pill.label) {
+      <span
+        class="ob-orbit-pill"
+        [style.--tx.px]="pill.x"
+        [style.--ty.px]="pill.y"
+        [style.--delay]="pill.delay + 's'"
+        [style.--dur]="pill.dur + 's'"
+      >{{ pill.label }}</span>
+    }
+  </div>
+
+  <div class="ob-ready-copy">
+    <h2 class="ob-hero-gradient ob-hero--38">Your homepage is ready.</h2>
+    <p class="ob-body-text ob-text-center">Everything is personalised and waiting for you.</p>
+  </div>
+
+  <div class="ob-footer ob-footer--inline">
+    <button class="ob-pill-btn" type="button" (click)="next.emit()">
+      <span class="ob-pill-btn-text">Start Now</span>
+      <img src="assets/icons/arrow-right.svg" class="ob-icon ob-icon--gradient" alt="" aria-hidden="true" />
+    </button>
+  </div>
+
+</section>

@@ -1,0 +1,88 @@
+<section class="ob-section ob-customise">
+
+  <div class="ob-content ob-content--wide">
+    <h2 class="ob-hero-gradient ob-hero--38">Customise Your Homepage</h2>
+
+    <div class="ob-customise-layout">
+
+      <div class="ob-hp-preview">
+        <div class="ob-hp-preview-inner">
+          <div class="ob-hp-topbar">
+            <span class="ob-hp-logo">ADB</span>
+            <div class="ob-hp-topbar-icons">
+              <span class="ob-hp-icon-dot"></span>
+              <span class="ob-hp-icon-dot"></span>
+              <span class="ob-hp-icon-dot"></span>
+            </div>
+          </div>
+          <div class="ob-hp-greeting">Good morning, {{ firstNameOnly() }}.</div>
+          <div class="ob-hp-search-bar"></div>
+          <div class="ob-hp-modules-preview">
+            @for (mod of modules(); track mod.id) {
+              <div
+                class="ob-hp-mod-block"
+                [class.ob-hp-mod-block--active]="mod.enabled"
+                [class.ob-hp-mod-block--highlighted]="mod.id === highlightedModule"
+              >
+                <span class="ob-hp-mod-label">{{ mod.name }}</span>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+
+      <div class="ob-module-list">
+        <p class="ob-body-text">Based on your interests, we'll personalize your homepage experience.</p>
+        <p class="ob-body-text ob-module-subtitle">All homepage modules are enabled by default. The content you see within them will be tailored to your interests, and you can change your homepage layout at any time.</p>
+
+        <div class="ob-module-grid">
+          @for (mod of modules(); track mod.id) {
+            <div
+              class="ob-module-card"
+              [class.ob-module-card--on]="mod.enabled"
+              [class.ob-module-card--highlighted]="mod.id === highlightedModule"
+              (mouseenter)="highlightedModule = mod.id"
+              (mouseleave)="highlightedModule = null"
+              (click)="moduleToggle.emit(mod)"
+            >
+              <div class="ob-module-card-header">
+                <span class="ob-module-name">{{ mod.name }}</span>
+                <span class="ob-module-checkbox" [class.ob-module-checkbox--checked]="mod.enabled" role="checkbox" [attr.aria-checked]="mod.enabled">
+                  @if (mod.enabled) {
+                    <svg width="12" height="10" viewBox="0 0 12 10" fill="none" aria-hidden="true">
+                      <path d="M1 5L4.5 8.5L11 1.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  }
+                </span>
+              </div>
+              <span class="ob-module-status" [class.ob-module-status--recommended]="mod.recommended">
+                {{ mod.recommended ? 'Recommended for you' : 'Default' }}
+              </span>
+              <p class="ob-module-desc">{{ mod.desc }}</p>
+            </div>
+          }
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="ob-footer">
+    <div class="ob-nav-btns">
+      <button class="ob-pill-btn" type="button" (click)="prev.emit()">
+        <img src="assets/icons/arrow-left.svg" class="ob-icon ob-icon--gradient" alt="" aria-hidden="true" />
+        <span class="ob-pill-btn-text">Previous</span>
+      </button>
+      <button class="ob-pill-btn" type="button" (click)="next.emit()">
+        <span class="ob-pill-btn-text">Next</span>
+        <img src="assets/icons/arrow-right.svg" class="ob-icon ob-icon--gradient" alt="" aria-hidden="true" />
+      </button>
+    </div>
+    <div class="ob-progress">
+      @for (d of progressDots(); track d) {
+        <span class="ob-progress-dot" [class.ob-progress-dot--active]="activeDotStep() === d" (click)="dotClick.emit(d)"></span>
+      }
+    </div>
+  </div>
+
+</section>

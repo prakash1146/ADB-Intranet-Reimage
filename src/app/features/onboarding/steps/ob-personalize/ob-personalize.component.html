@@ -1,0 +1,63 @@
+<section class="ob-section ob-personalize">
+
+  <div class="ob-content">
+    <h2 class="ob-hero-gradient ob-hero--38">Help us personalize your homepage</h2>
+
+    <div class="ob-personalize-body">
+      <div class="ob-chips-section">
+        <div class="ob-chips-intro">
+          <p class="ob-body-text ob-text-center m-b-20">Based on your profile, we've surfaced the ones you're most likely to be interested in.</p>
+          <p class="ob-body-text ob-text-center m-b-5 ob-body-text-325">Select the areas that describe your roles and interests.</p>
+        </div>
+        <div class="ob-chips-wrap">
+          @for (topic of topics(); track topic.label) {
+            <button
+              class="ob-chip"
+              [class.ob-chip--selected]="topic.selected"
+              [class.ob-chip--default]="!topic.selected"
+              [attr.aria-pressed]="topic.selected"
+              type="button"
+              (click)="topicToggle.emit(topic)"
+            >
+              <span>{{ topic.label }}</span>
+            </button>
+          }
+        </div>
+      </div>
+
+      <div class="ob-optional-section">
+        <p class="ob-body-text ob-text-center">
+          (Optional) Tell us a little more. Describe more about your role, projects or the topics you'd like to keep up with
+        </p>
+        <div class="ob-textarea-wrap">
+          <textarea
+            class="ob-textarea"
+            [ngModel]="freeText()"
+            (ngModelChange)="freeTextChange.emit($event)"
+            placeholder="Examples: I support digital transformation projects in Southeast Asia, and like to keep up with AI, procurement and climate, finance"
+            rows="4"
+          ></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ob-footer">
+    <div class="ob-nav-btns">
+      <button class="ob-pill-btn" type="button" (click)="prev.emit()">
+        <img src="assets/icons/arrow-left.svg" class="ob-icon ob-icon--gradient" alt="" aria-hidden="true" />
+        <span class="ob-pill-btn-text">Previous</span>
+      </button>
+      <button class="ob-pill-btn" type="button" (click)="next.emit()">
+        <span class="ob-pill-btn-text">Next</span>
+        <img src="assets/icons/arrow-right.svg" class="ob-icon ob-icon--gradient" alt="" aria-hidden="true" />
+      </button>
+    </div>
+    <div class="ob-progress">
+      @for (d of progressDots(); track d) {
+        <span class="ob-progress-dot" [class.ob-progress-dot--active]="activeDotStep() === d" (click)="dotClick.emit(d)"></span>
+      }
+    </div>
+  </div>
+
+</section>

@@ -1,0 +1,31 @@
+<section class="ob-section ob-welcome">
+
+  <div class="ob-welcome-top">
+    <h1 class="ob-hero-gradient">Welcome, {{ userName() }}.</h1>
+
+    <div class="ob-profile-card">
+      <img class="ob-avatar" [src]="avatarUrl()" [alt]="userName()" />
+      <div class="ob-profile-text">
+        <p class="ob-profile-name">{{ userName() }}</p>
+        <p class="ob-profile-meta">{{ userTitle() }}</p>
+        <p class="ob-profile-meta">{{ userDept() }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="ob-footer">
+    <div class="ob-nav-btns ob-nav-btns--center">
+      <button class="ob-pill-btn" type="button" (click)="next.emit()">
+        <span class="ob-pill-btn-text">Let's Get Started</span>
+        <img src="assets/icons/arrow-right.svg" class="ob-icon ob-icon--gradient" alt="" aria-hidden="true" />
+      </button>
+      <button class="ob-skip-link" type="button" (click)="skip.emit()">I'll set up later</button>
+    </div>
+    <div class="ob-progress">
+      @for (d of progressDots(); track d) {
+        <span class="ob-progress-dot" [class.ob-progress-dot--active]="activeDotStep() === d" (click)="dotClick.emit(d)"></span>
+      }
+    </div>
+  </div>
+
+</section>
